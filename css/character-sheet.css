@@ -1,0 +1,310 @@
+/* Character Sheet Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #f5f5f5;
+    margin: 5% auto;
+    padding: 30px;
+    border: 2px solid #8B0000;
+    width: 80%;
+    max-width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    max-height: 85vh;
+    overflow-y: auto;
+    background-image: url('../img/paper-texture.png');
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #8B0000;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close-modal:hover {
+    color: #000;
+    transform: scale(1.2);
+}
+
+.character-sheet-header {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #8B0000;
+    padding-bottom: 20px;
+}
+
+.character-portrait-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #8B0000;
+    margin-right: 30px;
+    flex-shrink: 0;
+}
+
+.character-portrait-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.character-header-info {
+    flex-grow: 1;
+}
+
+.character-header-info h2 {
+    margin: 0 0 5px 0;
+    color: #8B0000;
+    font-family: 'Cinzel', serif;
+    font-size: 2em;
+}
+
+.character-header-info p {
+    margin: 0 0 15px 0;
+    font-size: 1.2em;
+    color: #2c3e50;
+}
+
+.character-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.character-meta p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.sheet-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #d1c4a1;
+    padding-bottom: 10px;
+}
+
+.sheet-tab-btn {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.sheet-tab-btn:hover {
+    background-color: #34495e;
+    transform: translateY(-3px);
+}
+
+.sheet-tab-btn.active {
+    background-color: #8B0000;
+    font-weight: bold;
+    transform: translateY(-3px);
+}
+
+.sheet-tab-content {
+    display: none;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d1c4a1;
+}
+
+.sheet-tab-content.active {
+    display: block;
+}
+
+.sheet-tab-content h3 {
+    margin-top: 0;
+    color: #8B0000;
+    font-family: 'Cinzel', serif;
+    border-bottom: 2px solid #d1c4a1;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.ability-scores, .combat-stats, .proficiencies, .features {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #d1c4a1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ability-scores h4, .combat-stats h4, .proficiencies h4, .features h4 {
+    margin-top: 0;
+    color: #8B0000;
+    font-family: 'Cinzel', serif;
+    border-bottom: 1px solid #d1c4a1;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.ability-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.ability {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #d1c4a1;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.ability-name {
+    font-weight: bold;
+    color: #2c3e50;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.ability-score {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #8B0000;
+}
+
+.ability-modifier {
+    font-size: 1.2em;
+    color: #2c3e50;
+}
+
+.combat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.combat-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #d1c4a1;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.combat-stat-label {
+    font-weight: bold;
+    color: #2c3e50;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.combat-stat-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #8B0000;
+}
+
+/* Edit mode styles */
+.edit-character-btn, .save-character-btn {
+    position: absolute;
+    top: 15px;
+    right: 60px;
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.edit-character-btn:hover, .save-character-btn:hover {
+    background-color: #6d0000;
+    transform: translateY(-2px);
+}
+
+.save-character-btn {
+    background-color: #006400;
+}
+
+.save-character-btn:hover {
+    background-color: #004d00;
+}
+
+.edit-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #d1c4a1;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.stat-input {
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #8B0000;
+}
+
+textarea.edit-input {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Responsive adjustments for character sheet */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 15px;
+    }
+    
+    .character-sheet-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .ability-grid, .combat-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .sheet-tab-btn {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+}

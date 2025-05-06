@@ -735,17 +735,8 @@ document.addEventListener('DOMContentLoaded', function() {
             dmNotesDiv.appendChild(div);
         });
         
-        // Check if DM mode is active and show/hide DM-only content
-        const isDmMode = localStorage.getItem('dmModeActive') === 'true' || 
-                         document.cookie.includes('dmMode=active');
-        
-        document.querySelectorAll('.dm-only').forEach(el => {
-            if (isDmMode) {
-                el.classList.add('visible');
-            } else {
-                el.classList.remove('visible');
-            }
-        });
+        // Update DM-only content visibility
+        updateDmOnlyContentVisibility();
         
         // Make certain fields editable
         document.getElementById('modal-character-name').className = 'editable';
@@ -765,6 +756,25 @@ document.addEventListener('DOMContentLoaded', function() {
         return modifier >= 0 ? `+${modifier}` : modifier;
     }
     
+    // Function to update DM-only content visibility
+    function updateDmOnlyContentVisibility() {
+        const isDmMode = localStorage.getItem('dmModeActive') === 'true' || 
+                         document.cookie.includes('dmMode=active');
+        
+        document.querySelectorAll('.dm-only').forEach(el => {
+            if (isDmMode) {
+                el.classList.add('visible');
+            } else {
+                el.classList.remove('visible');
+            }
+        });
+    }
+
+    // Call this function on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        updateDmOnlyContentVisibility();
+    });
+
     // Load characters from localStorage on page load
     function loadCharactersFromStorage() {
         const savedCharacters = JSON.parse(localStorage.getItem('dndCharacters') || '[]');
@@ -776,5 +786,34 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Call this function when the page loads
     loadCharactersFromStorage();
+});
+
+// Remove any duplicate DM mode functionality and use the shared module instead
+document.addEventListener('DOMContentLoaded', function() {
+    // Listen for DM mode changes
+    document.addEventListener('dmModeChanged', function(e) {
+        // Update any character-specific DM content visibility
+        const isDmMode = e.detail.active;
+        
+        // For example, update character sheet DM notes visibility
+        const dmNotesSection = document.querySelector('.notes-section.dm-only');
+        if (dmNotesSection) {
+            if (isDmMode) {
+                dmNotesSection.classList.add('visible');
+            } else {
+                dmNotesSection.classList.remove('visible');
+            }
+        }
+    });
+    
+    // When populating character sheet, check DM mode
+    function populateCharacterSheet(data) {
+        // ... existing code ...
+        
+        // Update DM-only content visibility using the shared module
+        if (window.dmMode && typeof window.dmMode.updateVisibility === 'function') {
+            window.dmMode.updateVisibility();
+        }
+    }
 });
 
