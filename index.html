@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Campaign Wiki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>D&D Campaign Wiki</h1>
+        <nav>
+            <ul>
+                <li><a href="#campaigns" class="active">Campaigns</a></li>
+                <li><a href="characters.html">Characters</a></li>
+                <li><a href="npcs.html">NPCs</a></li>
+                <li><a href="world.html">World</a></li>
+                <li><a href="lore.html">Lore</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="campaigns">
+            <h2>Campaign Timeline</h2>
+            
+            <div class="campaign-selector">
+                <label for="campaign-select">Select Campaign:</label>
+                <select id="campaign-select">
+                    <option value="campaign1">The Lost Mines</option>
+                    <option value="campaign2">Curse of Strahd</option>
+                    <option value="campaign3">Storm King's Thunder</option>
+                </select>
+            </div>
+            
+            <div class="timeline-tabs">
+                <button class="tab-btn active" data-tab="pre">Before Players Arrived</button>
+                <button class="tab-btn" data-tab="current">During the Campaign</button>
+                <button class="tab-btn" data-tab="post">After the Campaign</button>
+            </div>
+            
+            <!-- Pre-Campaign Content -->
+            <div id="pre-content" class="tab-content active">
+                <h3>World Before Heroes</h3>
+                <div class="content-sections">
+                    <div class="section-card">
+                        <h4>World Lore</h4>
+                        <p id="pre-world-lore">Loading world history...</p>
+                        <a href="#" class="view-more">View Full History</a>
+                    </div>
+                    
+                    <div class="section-card">
+                        <h4>Key NPCs & Locations</h4>
+                        <ul id="pre-key-npcs">
+                            <li>Loading NPCs...</li>
+                        </ul>
+                        <a href="#" class="view-more">View All NPCs</a>
+                    </div>
+                    
+                    <div class="section-card dm-only">
+                        <h4>Hidden Truths</h4>
+                        <p id="pre-hidden-truths">Loading DM secrets...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Current Campaign Content -->
+            <div id="current-content" class="tab-content">
+                <h3>Current Adventures</h3>
+                <div class="content-sections">
+                    <div class="section-card">
+                        <h4>Session Recaps</h4>
+                        <ul id="current-recaps">
+                            <li>Loading session recaps...</li>
+                        </ul>
+                        <a href="#" class="view-more">View All Sessions</a>
+                    </div>
+                    
+                    <div class="section-card">
+                        <h4>Active Quests</h4>
+                        <ul id="current-quests">
+                            <li>Loading quests...</li>
+                        </ul>
+                        <a href="#" class="view-more">View Quest Board</a>
+                    </div>
+                    
+                    <div class="section-card">
+                        <h4>World Updates</h4>
+                        <p id="current-world-updates">Loading world changes...</p>
+                        <a href="#" class="view-more">View World Map</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Post-Campaign Content -->
+            <div id="post-content" class="tab-content">
+                <h3>The World After</h3>
+                <div class="content-sections">
+                    <div class="section-card">
+                        <h4>Long-term Consequences</h4>
+                        <p id="post-consequences">Loading consequences...</p>
+                    </div>
+                    
+                    <div class="section-card">
+                        <h4>Character Epilogues</h4>
+                        <p id="post-epilogues">Loading epilogues...</p>
+                    </div>
+                    
+                    <div class="section-card">
+                        <h4>Legacy Artifacts</h4>
+                        <p id="post-legacy-artifacts">Loading artifacts...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 D&D Campaign Wiki | Created for your adventures</p>
+    </footer>
+
+    <script src="js/campaign.js"></script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPCs - D&D Campaign Wiki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>D&D Campaign Wiki</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Campaigns</a></li>
+                <li><a href="characters.html">Characters</a></li>
+                <li><a href="npcs.html" class="active">NPCs</a></li>
+                <li><a href="world.html">World</a></li>
+                <li><a href="lore.html">Lore</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="npcs">
+            <h2>Non-Player Characters</h2>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="npc-campaign-select">Filter by Campaign:</label>
+                    <select id="npc-campaign-select">
+                        <option value="all">All Campaigns</option>
+                        <option value="campaign1">The Lost Mines</option>
+                        <option value="campaign2">Curse of Strahd</option>
+                        <option value="campaign3">Storm King's Thunder</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="npc-type-select">Filter by Type:</label>
+                    <select id="npc-type-select">
+                        <option value="all">All Types</option>
+                        <option value="ally">Allies</option>
+                        <option value="villain">Villains</option>
+                        <option value="neutral">Neutral</option>
+                    </select>
+                </div>
+                
+                <div class="search-group">
+                    <input type="text" id="npc-search" placeholder="Search NPCs...">
+                    <button id="search-btn"><i class="search-icon"></i></button>
+                </div>
+            </div>
+            
+            <div class="npc-grid" id="npc-grid">
+                <!-- NPC cards will be loaded here -->
+                <div class="npc-card" data-campaign="campaign1" data-type="villain">
+                    <div class="npc-portrait">
+                        <img src="img/npcs/black-spider.jpg" alt="The Black Spider">
+                        <div class="npc-type villain">Villain</div>
+                    </div>
+                    <div class="npc-info">
+                        <h3>The Black Spider</h3>
+                        <p class="npc-subtitle">Drow Mage</p>
+                        <div class="npc-details">
+                            <p><strong>Campaign:</strong> The Lost Mines</p>
+                            <p><strong>Location:</strong> Wave Echo Cave</p>
+                            <p><strong>Status:</strong> <span class="status active">Active</span></p>
+                        </div>
+                        <div class="npc-description">
+                            <p>A mysterious drow seeking control of the Forge of Spells. He commands a network of bugbears, goblins, and other minions.</p>
+                        </div>
+                        <div class="npc-stats dm-only">
+                            <div class="stat">
+                                <span class="stat-name">AC</span>
+                                <span class="stat-value">15</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">HP</span>
+                                <span class="stat-value">45</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">10</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">13</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Full Details</a>
+                    </div>
+                </div>
+                
+                <div class="npc-card" data-campaign="campaign1" data-type="ally">
+                    <div class="npc-portrait">
+                        <img src="img/npcs/sildar.jpg" alt="Sildar Hallwinter">
+                        <div class="npc-type ally">Ally</div>
+                    </div>
+                    <div class="npc-info">
+                        <h3>Sildar Hallwinter</h3>
+                        <p class="npc-subtitle">Human Knight</p>
+                        <div class="npc-details">
+                            <p><strong>Campaign:</strong> The Lost Mines</p>
+                            <p><strong>Location:</strong> Phandalin</p>
+                            <p><strong>Status:</strong> <span class="status active">Active</span></p>
+                        </div>
+                        <div class="npc-description">
+                            <p>A member of the Lords' Alliance investigating disappearances in the region. He was captured alongside Gundren Rockseeker.</p>
+                        </div>
+                        <div class="npc-stats dm-only">
+                            <div class="stat">
+                                <span class="stat-name">AC</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">HP</span>
+                                <span class="stat-value">27</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">15</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">11</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">13</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Full Details</a>
+                    </div>
+                </div>
+                
+                <div class="npc-card" data-campaign="campaign2" data-type="villain">
+                    <div class="npc-portrait">
+                        <img src="img/npcs/strahd.jpg" alt="Count Strahd von Zarovich">
+                        <div class="npc-type villain">Villain</div>
+                    </div>
+                    <div class="npc-info">
+                        <h3>Count Strahd von Zarovich</h3>
+                        <p class="npc-subtitle">Vampire Lord</p>
+                        <div class="npc-details">
+                            <p><strong>Campaign:</strong> Curse of Strahd</p>
+                            <p><strong>Location:</strong> Castle Ravenloft</p>
+                            <p><strong>Status:</strong> <span class="status active">Active</span></p>
+                        </div>
+                        <div class="npc-description">
+                            <p>The ancient vampire ruler of Barovia, cursed to forever seek but never obtain his true love. He is a master tactician and powerful spellcaster.</p>
+                        </div>
+                        <div class="npc-stats dm-only">
+                            <div class="stat">
+                                <span class="stat-name">AC</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">HP</span>
+                                <span class="stat-value">144</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">18</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">18</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">18</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">20</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">15</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">18</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Full Details</a>
+                    </div>
+                </div>
+                
+                <div class="npc-card" data-campaign="campaign2" data-type="ally">
+                    <div class="npc-portrait">
+                        <img src="img/npcs/ireena.jpg" alt="Ireena Kolyana">
+                        <div class="npc-type ally">Ally</div>
+                    </div>
+                    <div class="npc-info">
+                        <h3>Ireena Kolyana</h3>
+                        <p class="npc-subtitle">Human Noble</p>
+                        <div class="npc-details">
+                            <p><strong>Campaign:</strong> Curse of Strahd</p>
+                            <p><strong>Location:</strong> Village of Barovia</p>
+                            <p><strong>Status:</strong> <span class="status active">Active</span></p>
+                        </div>
+                        <div class="npc-description">
+                            <p>The adopted daughter of the burgomaster of Barovia, she bears a striking resemblance to Strahd's long-lost love Tatyana and is the current object of his obsession.</p>
+                        </div>
+                        <div class="npc-stats dm-only">
+                            <div class="stat">
+                                <span class="stat-name">AC</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">HP</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">10</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">10</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">13</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Full Details</a>
+                    </div>
+                </div>
+                
+                <div class="npc-card" data-campaign="campaign3" data-type="neutral">
+                    <div class="npc-portrait">
+                        <img src="img/npcs/zephyros.jpg" alt="Zephyros">
+                        <div class="npc-type neutral">Neutral</div>
+                    </div>
+                    <div class="npc-info">
+                        <h3>Zephyros</h3>
+                        <p class="npc-subtitle">Cloud Giant Wizard</p>
+                        <div class="npc-details">
+                            <p><strong>Campaign:</strong> Storm King's Thunder</p>
+                            <p><strong>Location:</strong> Flying Tower</p>
+                            <p><strong>Status:</strong> <span class="status active">Active</span></p>
+                        </div>
+                        <div class="npc-description">
+                            <p>An eccentric cloud giant wizard who seeks to restore peace between giants and small folk. He travels in a magical flying tower and offers aid to adventurers.</p>
+                        </div>
+                        <div class="npc-stats dm-only">
+                            <div class="stat">
+                                <span class="stat-name">AC</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">HP</span>
+                                <span class="stat-value">200</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">27</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">10</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">22</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">18</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Full Details</a>
+                    </div>
+                </div>
+                
+                <div class="npc-card" data-campaign="campaign3" data-type="villain">
+                    <div class="npc-portrait">
+                        <img src="img/npcs/iymrith.jpg" alt="Iymrith">
+                        <div class="npc-type villain">Villain</div>
+                    </div>
+                    <div class="npc-info">
+                        <h3>Iymrith</h3>
+                        <p class="npc-subtitle">Ancient Blue Dragon</p>
+                        <div class="npc-details">
+                            <p><strong>Campaign:</strong> Storm King's Thunder</p>
+                            <p><strong>Location:</strong> Maelstrom</p>
+                            <p><strong>Status:</strong> <span class="status active">Active</span></p>
+                        </div>
+                        <div class="npc-description">
+                            <p>An ancient blue dragon disguised as a storm giant advisor. She orchestrated King Hekaton's kidnapping to weaken giant society and claim their treasures.</p>
+                        </div>
+                        <div class="npc-stats dm-only">
+                            <div class="stat">
+                                <span class="stat-name">AC</span>
+                                <span class="stat-value">22</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">HP</span>
+                                <span class="stat-value">481</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">29</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">10</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">27</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">18</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">17</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">21</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Full Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 D&D Campaign Wiki | Created for your adventures</p>
+    </footer>
+
+    <script src="js/npcs.js"></script>
+</body>
+</html>

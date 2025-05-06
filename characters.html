@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters - D&D Campaign Wiki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>D&D Campaign Wiki</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Campaigns</a></li>
+                <li><a href="characters.html" class="active">Characters</a></li>
+                <li><a href="npcs.html">NPCs</a></li>
+                <li><a href="world.html">World</a></li>
+                <li><a href="lore.html">Lore</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="characters">
+            <h2>Player Characters</h2>
+            
+            <div class="campaign-selector">
+                <label for="character-campaign-select">Filter by Campaign:</label>
+                <select id="character-campaign-select">
+                    <option value="all">All Campaigns</option>
+                    <option value="campaign1">The Lost Mines</option>
+                    <option value="campaign2">Curse of Strahd</option>
+                    <option value="campaign3">Storm King's Thunder</option>
+                </select>
+            </div>
+            
+            <div class="character-grid" id="character-grid">
+                <!-- Character cards will be loaded here -->
+                <div class="character-card" data-campaign="campaign1">
+                    <div class="character-portrait">
+                        <img src="img/characters/bruenor.jpg" alt="Bruenor Battlehammer">
+                    </div>
+                    <div class="character-info">
+                        <h3>Bruenor Battlehammer</h3>
+                        <p class="character-subtitle">Dwarf Fighter, Level 5</p>
+                        <div class="character-details">
+                            <p><strong>Player:</strong> Mike</p>
+                            <p><strong>Campaign:</strong> The Lost Mines</p>
+                            <p><strong>Background:</strong> Folk Hero</p>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">17</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">10</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">8</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">13</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Character Sheet</a>
+                    </div>
+                </div>
+                
+                <div class="character-card" data-campaign="campaign2">
+                    <div class="character-portrait">
+                        <img src="img/characters/ezmerelda.jpg" alt="Ezmerelda d'Avenir">
+                    </div>
+                    <div class="character-info">
+                        <h3>Ezmerelda d'Avenir</h3>
+                        <p class="character-subtitle">Human Ranger, Level 7</p>
+                        <div class="character-details">
+                            <p><strong>Player:</strong> Sarah</p>
+                            <p><strong>Campaign:</strong> Curse of Strahd</p>
+                            <p><strong>Background:</strong> Monster Hunter</p>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">18</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Character Sheet</a>
+                    </div>
+                </div>
+                
+                <div class="character-card" data-campaign="campaign3">
+                    <div class="character-portrait">
+                        <img src="img/characters/harshnag.jpg" alt="Harshnag the Grim">
+                    </div>
+                    <div class="character-info">
+                        <h3>Harshnag the Grim</h3>
+                        <p class="character-subtitle">Frost Giant Barbarian, Level 6</p>
+                        <div class="character-details">
+                            <p><strong>Player:</strong> Chris</p>
+                            <p><strong>Campaign:</strong> Storm King's Thunder</p>
+                            <p><strong>Background:</strong> Outlander</p>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">20</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">18</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">10</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">8</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Character Sheet</a>
+                    </div>
+                </div>
+                
+                <!-- Add a fourth character -->
+                <div class="character-card" data-campaign="campaign1">
+                    <div class="character-portrait">
+                        <img src="img/characters/drizzt.jpg" alt="Drizzt Do'Urden">
+                    </div>
+                    <div class="character-info">
+                        <h3>Drizzt Do'Urden</h3>
+                        <p class="character-subtitle">Drow Ranger, Level 6</p>
+                        <div class="character-details">
+                            <p><strong>Player:</strong> Alex</p>
+                            <p><strong>Campaign:</strong> The Lost Mines</p>
+                            <p><strong>Background:</strong> Outlander</p>
+                        </div>
+                        <div class="character-stats">
+                            <div class="stat">
+                                <span class="stat-name">STR</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">DEX</span>
+                                <span class="stat-value">20</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CON</span>
+                                <span class="stat-value">14</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">INT</span>
+                                <span class="stat-value">13</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">WIS</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-name">CHA</span>
+                                <span class="stat-value">15</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">View Character Sheet</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 D&D Campaign Wiki | Created for your adventures</p>
+    </footer>
+
+    <script src="js/characters.js"></script>
+</body>
+</html>

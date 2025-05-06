@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World - D&D Campaign Wiki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>D&D Campaign Wiki</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Campaigns</a></li>
+                <li><a href="characters.html">Characters</a></li>
+                <li><a href="npcs.html">NPCs</a></li>
+                <li><a href="world.html" class="active">World</a></li>
+                <li><a href="lore.html">Lore</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="world">
+            <h2>The World</h2>
+            
+            <div class="campaign-selector">
+                <label for="world-campaign-select">Select Campaign World:</label>
+                <select id="world-campaign-select">
+                    <option value="campaign1">The Sword Coast (Lost Mines)</option>
+                    <option value="campaign2">Barovia (Curse of Strahd)</option>
+                    <option value="campaign3">The North (Storm King's Thunder)</option>
+                </select>
+            </div>
+            
+            <div class="world-tabs">
+                <button class="tab-btn active" data-tab="map">World Map</button>
+                <button class="tab-btn" data-tab="locations">Key Locations</button>
+                <button class="tab-btn" data-tab="factions">Factions & Powers</button>
+                <button class="tab-btn" data-tab="calendar">Calendar & Time</button>
+            </div>
+            
+            <!-- World Map Content -->
+            <div id="map-content" class="tab-content active">
+                <h3>World Map</h3>
+                <div class="map-container">
+                    <div class="interactive-map">
+                        <img id="world-map" src="img/maps/sword-coast-map.jpg" alt="Campaign World Map">
+                        <div class="map-markers">
+                            <!-- Map markers will be added dynamically -->
+                        </div>
+                    </div>
+                    <div class="map-legend">
+                        <h4>Map Legend</h4>
+                        <ul id="map-locations-list">
+                            <li data-location="neverwinter" class="map-location">
+                                <span class="location-dot city"></span>
+                                Neverwinter - Major City
+                            </li>
+                            <li data-location="phandalin" class="map-location">
+                                <span class="location-dot town"></span>
+                                Phandalin - Town
+                            </li>
+                            <li data-location="cragmaw-castle" class="map-location">
+                                <span class="location-dot dungeon"></span>
+                                Cragmaw Castle - Dungeon
+                            </li>
+                            <li data-location="wave-echo-cave" class="map-location dm-only">
+                                <span class="location-dot secret"></span>
+                                Wave Echo Cave - Secret Location
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Locations Content -->
+            <div id="locations-content" class="tab-content">
+                <h3>Key Locations</h3>
+                <div class="location-grid">
+                    <div class="location-card">
+                        <div class="location-image">
+                            <img src="img/locations/neverwinter.jpg" alt="Neverwinter">
+                        </div>
+                        <div class="location-info">
+                            <h4>Neverwinter</h4>
+                            <p class="location-type">Major City</p>
+                            <div class="location-description">
+                                <p>Known as the City of Skilled Hands or the Jewel of the North, Neverwinter is a bustling city on the Sword Coast. Despite being devastated by the eruption of Mount Hotenow, the city is rebuilding under Lord Neverember's leadership.</p>
+                            </div>
+                            <div class="location-details">
+                                <p><strong>Population:</strong> ~23,000</p>
+                                <p><strong>Government:</strong> Lordship (Lord Dagult Neverember)</p>
+                                <p><strong>Notable Features:</strong> Castle Never, Hall of Justice, Neverwinter River</p>
+                            </div>
+                            <a href="#" class="view-more">View Full Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <div class="location-image">
+                            <img src="img/locations/phandalin.jpg" alt="Phandalin">
+                        </div>
+                        <div class="location-info">
+                            <h4>Phandalin</h4>
+                            <p class="location-type">Frontier Settlement</p>
+                            <div class="location-description">
+                                <p>A small mining town that was abandoned and has recently been resettled by hardy frontiersmen seeking to make their fortunes in the nearby mines. The town has been troubled by bandits known as the Redbrands.</p>
+                            </div>
+                            <div class="location-details">
+                                <p><strong>Population:</strong> ~150</p>
+                                <p><strong>Government:</strong> Town Master (Harbin Wester)</p>
+                                <p><strong>Notable Features:</strong> Stonehill Inn, Townmaster's Hall, Tresendar Manor</p>
+                            </div>
+                            <a href="#" class="view-more">View Full Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card dm-only">
+                        <div class="location-image">
+                            <img src="img/locations/wave-echo-cave.jpg" alt="Wave Echo Cave">
+                        </div>
+                        <div class="location-info">
+                            <h4>Wave Echo Cave</h4>
+                            <p class="location-type">Ancient Mine (Secret)</p>
+                            <div class="location-description">
+                                <p>The legendary Wave Echo Cave contains the Forge of Spells, a magical location where dwarves and gnomes once crafted powerful magic items. The cave was lost for centuries after a devastating orc attack.</p>
+                            </div>
+                            <div class="location-details">
+                                <p><strong>Status:</strong> Rediscovered</p>
+                                <p><strong>Current Occupants:</strong> Various monsters, Black Spider's forces</p>
+                                <p><strong>Notable Features:</strong> Forge of Spells, underground river, ancient dwarven halls</p>
+                            </div>
+                            <a href="#" class="view-more">View Full Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Factions Content -->
+            <div id="factions-content" class="tab-content">
+                <h3>Factions & Powers</h3>
+                <div class="faction-grid">
+                    <div class="faction-card">
+                        <div class="faction-banner">
+                            <img src="img/factions/lords-alliance.png" alt="Lords' Alliance">
+                        </div>
+                        <div class="faction-info">
+                            <h4>The Lords' Alliance</h4>
+                            <p class="faction-motto">"Security through strength."</p>
+                            <div class="faction-description">
+                                <p>A coalition of political powers concerned with mutual security and prosperity. They maintain order, protect common interests, and stand united against threats to civilization.</p>
+                            </div>
+                            <div class="faction-details">
+                                <p><strong>Leader:</strong> Council of Lords</p>
+                                <p><strong>Headquarters:</strong> Various (Waterdeep, Neverwinter, etc.)</p>
+                                <p><strong>Notable Members:</strong> Sildar Hallwinter (Phandalin representative)</p>
+                            </div>
+                            <a href="#" class="view-more">View Full Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="faction-card">
+                        <div class="faction-banner">
+                            <img src="img/factions/harpers.png" alt="The Harpers">
+                        </div>
+                        <div class="faction-info">
+                            <h4>The Harpers</h4>
+                            <p class="faction-motto">"Down with tyranny. Fairness and equality for all."</p>
+                            <div class="faction-description">
+                                <p>A scattered network of spellcasters and spies who advocate equality and covertly oppose the abuse of power, magical or otherwise.</p>
+                            </div>
+                            <div class="faction-details">
+                                <p><strong>Leader:</strong> The High Harpers (identities secret)</p>
+                                <p><strong>Headquarters:</strong> Twilight Hall, Berdusk</p>
+                                <p><strong>Notable Members:</strong> Sister Garaele (Phandalin shrine keeper)</p>
+                            </div>
+                            <a href="#" class="view-more">View Full Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="faction-card dm-only">
+                        <div class="faction-banner">
+                            <img src="img/factions/zhentarim.png" alt="The Zhentarim">
+                        </div>
+                        <div class="faction-info">
+                            <h4>The Zhentarim</h4>
+                            <p class="faction-motto">"Join us and prosper. Oppose us and suffer."</p>
+                            <div class="faction-description">
+                                <p>An ambitious and opportunistic network of merchants, mercenaries, and malefactors who seek to expand their influence and power throughout Faerûn.</p>
+                            </div>
+                            <div class="faction-details">
+                                <p><strong>Leader:</strong> The Black Network</p>
+                                <p><strong>Headquarters:</strong> The Citadel of the Raven</p>
+                                <p><strong>Secret Plans:</strong> Establishing a foothold in Phandalin through the Sleeping Giant tavern</p>
+                            </div>
+                            <a href="#" class="view-more">View Full Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Calendar Content -->
+            <div id="calendar-content" class="tab-content">
+                <h3>Calendar & Time</h3>
+                <div class="calendar-container">
+                    <div class="calendar-info">
+                        <h4>The Calendar of Harptos</h4>
+                        <p>The Faerûnian calendar consists of twelve months of thirty days each, with five special holidays that fall between certain months.</p>
+                        
+                        <div class="calendar-months">
+                            <div class="month">
+                                <h5>Hammer (Deepwinter)</h5>
+                                <p>The first month of the year, during the depths of winter.</p>
+                                <p class="current-date dm-only">Current campaign date: Hammer 15, 1491 DR</p>
+                            </div>
+                            
+                            <div class="month">
+                                <h5>Midwinter Holiday</h5>
+                                <p>A special holiday between Hammer and Alturiak.</p>
+                            </div>
+                            
+                            <!-- Additional months would be listed here -->
+                        </div>
+                        
+                        <div class="time-tracking">
+                            <h4>Campaign Timeline</h4>
+                            <div class="timeline">
+                                <div class="timeline-event">
+                                    <span class="event-date">Hammer 1, 1491 DR</span>
+                                    <span class="event-description">Party meets in Neverwinter, hired by Gundren Rockseeker</span>
+                                </div>
+                                <div class="timeline-event">
+                                    <span class="event-date">Hammer 4, 1491 DR</span>
+                                    <span class="event-description">Ambush on Triboar Trail, discovery of Cragmaw Hideout</span>
+                                </div>
+                                <div class="timeline-event">
+                                    <span class="event-date">Hammer 7, 1491 DR</span>
+                                    <span class="event-description">Arrival in Phandalin, confrontation with Redbrands</span>
+                                </div>
+                                <!-- More timeline events would be added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 D&D Campaign Wiki | Created for your adventures</p>
+    </footer>
+
+    <script src="js/world.js"></script>
+</body>
+</html>
