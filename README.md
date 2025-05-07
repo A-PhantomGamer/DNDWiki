@@ -10,18 +10,24 @@ A dynamic web-based wiki system designed specifically for Dungeons & Dragons cam
 - Track campaign progress and timeline
 - Store session notes and important events
 - Custom campaign settings and details
+- **Quest/Goal Tracker with rewards system** *(Planned)*
+- **In-game calendar with seasonal events** *(Planned)*
 
 ### Character Management
 - Player character profiles and sheets
 - NPC database with searchable entries
 - Character relationships and connections
 - Import/Export character data
+- **Party inventory management** *(Planned)*
+- **Secret backstory vault (DM-only access)** *(Planned)*
 
 ### World Building
 - Interactive world map with custom markers
 - Location descriptions and details
 - Faction and organization tracking
 - Historical events timeline
+- **Bestiary with filterable monsters/NPCs** *(Planned)*
+- **Trade/economy simulator** *(Planned)*
 
 ### Lore System
 - Campaign-specific lore entries
@@ -29,12 +35,16 @@ A dynamic web-based wiki system designed specifically for Dungeons & Dragons cam
 - Religious and deity information
 - Artifact and magical item catalog
 - DM-only secret information
+- **Prophesy/omens tracker** *(Planned)*
+- **Rumor mill generator** *(Planned)*
 
 ### DM Tools
 - Private DM notes and secrets
 - Campaign planning tools
 - Password-protected DM mode
 - Edit and update content on the fly
+- **Red herring tracker** *(Planned)*
+- **"Chekhov’s Gun" unresolved plot dashboard** *(Planned)*
 
 ## Technical Details
 
@@ -49,6 +59,8 @@ A dynamic web-based wiki system designed specifically for Dungeons & Dragons cam
 - No database required - runs entirely in browser
 - Offline functionality
 - Easy to deploy and share
+- **Version control for content** *(Planned)*
+- **Dark mode/accessibility toggle** *(Planned)*
 
 ## Installation
 
