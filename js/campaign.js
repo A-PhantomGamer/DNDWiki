@@ -179,3 +179,19 @@ function updateCampaignUI(data) {
     document.getElementById('post-epilogues').textContent = data.post.epilogues;
     document.getElementById('post-legacy-artifacts').textContent = data.post.legacyArtifacts;
 }
+
+document.getElementById('dm-mode-toggle').addEventListener('click', function() {
+    document.body.classList.toggle('dm-mode-active');
+    this.textContent = document.body.classList.contains('dm-mode-active') ? 'Exit DM Mode' : 'DM Mode';
+    
+    // Optional: Save DM mode state
+    localStorage.setItem('dmMode', document.body.classList.contains('dm-mode-active'));
+});
+
+// Restore DM mode state on page load
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('dmMode') === 'true') {
+        document.body.classList.add('dm-mode-active');
+        document.getElementById('dm-mode-toggle').textContent = 'Exit DM Mode';
+    }
+});

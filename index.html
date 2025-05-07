@@ -6,10 +6,15 @@
     <title>D&D Campaign Wiki</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dm-mode.css">
 </head>
 <body>
     <header>
-        <h1>D&D Campaign Wiki</h1>
+        <div class="header-title">
+            <span>D</span>
+            <img src="img/dnd-ampersand.png" alt="D&D Ampersand">
+            <span>D Campaign Wiki</span>
+        </div>
         <nav>
             <ul>
                 <li><a href="#campaigns" class="active">Campaigns</a></li>
@@ -28,9 +33,7 @@
             <div class="campaign-selector">
                 <label for="campaign-select">Select Campaign:</label>
                 <select id="campaign-select">
-                    <option value="campaign1">The Lost Mines</option>
-                    <option value="campaign2">Curse of Strahd</option>
-                    <option value="campaign3">Storm King's Thunder</option>
+                    <option value="default">Select a Campaign</option>
                 </select>
             </div>
             
@@ -44,23 +47,14 @@
             <div id="pre-content" class="tab-content active">
                 <h3>World Before Heroes</h3>
                 <div class="content-sections">
-                    <div class="section-card">
-                        <h4>World Lore</h4>
-                        <p id="pre-world-lore">Loading world history...</p>
-                        <a href="#" class="view-more">View Full History</a>
-                    </div>
-                    
-                    <div class="section-card">
-                        <h4>Key NPCs & Locations</h4>
-                        <ul id="pre-key-npcs">
-                            <li>Loading NPCs...</li>
-                        </ul>
-                        <a href="#" class="view-more">View All NPCs</a>
-                    </div>
-                    
-                    <div class="section-card dm-only">
-                        <h4>Hidden Truths</h4>
-                        <p id="pre-hidden-truths">Loading DM secrets...</p>
+                    <div class="section-card lore-card">
+                        <h4>Ancient History</h4>
+                        <div class="card-content">
+                            <p class="card-date">Ages Past</p>
+                            <div class="card-description">
+                                Click to add world history in DM mode
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,26 +63,31 @@
             <div id="current-content" class="tab-content">
                 <h3>Current Adventures</h3>
                 <div class="content-sections">
-                    <div class="section-card">
+                    <div class="section-card session-card">
                         <h4>Session Recaps</h4>
-                        <ul id="current-recaps">
-                            <li>Loading session recaps...</li>
-                        </ul>
+                        <div class="timeline-marker">
+                            <ul id="current-recaps">
+                                <li>No sessions yet</li>
+                            </ul>
+                        </div>
                         <a href="#" class="view-more">View All Sessions</a>
                     </div>
                     
-                    <div class="section-card">
+                    <div class="section-card quest-card">
                         <h4>Active Quests</h4>
                         <ul id="current-quests">
-                            <li>Loading quests...</li>
+                            <li>No active quests</li>
                         </ul>
                         <a href="#" class="view-more">View Quest Board</a>
                     </div>
                     
-                    <div class="section-card">
-                        <h4>World Updates</h4>
-                        <p id="current-world-updates">Loading world changes...</p>
-                        <a href="#" class="view-more">View World Map</a>
+                    <div class="section-card location-card">
+                        <h4>Key Locations</h4>
+                        <div class="card-content">
+                            <div class="card-description">
+                                Click to add locations in DM mode
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,19 +96,18 @@
             <div id="post-content" class="tab-content">
                 <h3>The World After</h3>
                 <div class="content-sections">
-                    <div class="section-card">
-                        <h4>Long-term Consequences</h4>
-                        <p id="post-consequences">Loading consequences...</p>
-                    </div>
-                    
-                    <div class="section-card">
+                    <div class="section-card epilogue-card">
                         <h4>Character Epilogues</h4>
-                        <p id="post-epilogues">Loading epilogues...</p>
+                        <div class="card-content">
+                            <p id="post-epilogues">No epilogues yet</p>
+                        </div>
                     </div>
                     
-                    <div class="section-card">
-                        <h4>Legacy Artifacts</h4>
-                        <p id="post-legacy-artifacts">Loading artifacts...</p>
+                    <div class="section-card legacy-card">
+                        <h4>Legacy & Consequences</h4>
+                        <div class="card-content">
+                            <p id="post-legacy">Campaign legacy will appear here</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -117,9 +115,35 @@
     </main>
     
     <footer>
-        <p>&copy; 2025 D&D Campaign Wiki | Created for your adventures</p>
+        <div class="footer-content">
+            <img src="img/d20-icon.png" alt="D&D Logo" class="footer-logo">
+            <p>&copy; 2025 | Created for your adventures</p>
+        </div>
     </footer>
 
+    <button class="dm-mode-toggle" id="dm-mode-toggle">DM Mode</button>
+    
+    <div class="dm-panel">
+        <button class="btn btn-primary">Add Secret</button>
+        <button class="btn btn-primary">Edit Notes</button>
+        <button class="btn btn-primary">Reveal Map</button>
+        <button class="btn btn-primary">Add Campaign</button>
+        <button class="btn btn-danger" id="dm-logout">Exit DM Mode</button>
+    </div>
+
+    <div id="dm-password-modal" class="modal">
+        <div class="modal-content">
+            <h3>DM Authentication</h3>
+            <div class="form-group">
+                <label for="dm-password">Enter DM Password</label>
+                <input type="password" id="dm-password" class="form-control">
+            </div>
+            <button class="btn btn-primary" id="verify-password">Verify</button>
+            <button class="btn" id="cancel-password">Cancel</button>
+        </div>
+    </div>
+
     <script src="js/campaign.js"></script>
+    <script src="js/dm-mode.js"></script>
 </body>
 </html>

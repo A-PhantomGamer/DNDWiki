@@ -1,3 +1,4 @@
+<!-- characters.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,514 +7,100 @@
     <title>Characters - D&D Campaign Wiki</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Make sure character sheet specific styles are loaded -->
-    <link rel="stylesheet" href="css/character-sheet.css">
+    <link rel="stylesheet" href="css/dm-mode.css">
 </head>
 <body>
-    <header>
-        <h1>D&D Campaign Wiki</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Campaigns</a></li>
-                <li><a href="characters.html" class="active">Characters</a></li>
-                <li><a href="npcs.html">NPCs</a></li>
-                <li><a href="world.html">World</a></li>
-                <li><a href="lore.html">Lore</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <main>
         <section id="characters">
             <h2>Player Characters</h2>
-            
-            <div class="campaign-selector">
-                <label for="character-campaign-select">Filter by Campaign:</label>
-                <select id="character-campaign-select">
-                    <option value="all">All Campaigns</option>
-                    <option value="campaign1">The Lost Mines</option>
-                    <option value="campaign2">Curse of Strahd</option>
-                    <option value="campaign3">Storm King's Thunder</option>
-                </select>
+
+            <!-- Character Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="campaign-filter">Filter by Campaign:</label>
+                    <select id="campaign-filter">
+                        <option value="all">All Campaigns</option>
+                        <!-- Campaigns will be populated from localStorage -->
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="character-search" placeholder="Search characters...">
+                </div>
             </div>
-            
+
+            <!-- Character Grid -->
             <div class="character-grid" id="character-grid">
-                <!-- Character cards will be loaded here -->
-                <div class="character-card" data-campaign="campaign1">
-                    <div class="character-portrait">
-                        <img src="img/characters/kael.jpg" alt="Kael">
-                    </div>
-                    <div class="character-info">
-                        <h3>Kael</h3>
-                        <p class="character-subtitle">Human Sorcerer, Level 6</p>
-                        <div class="character-details">
-                            <p><strong>Player:</strong> David</p>
-                            <p><strong>Campaign:</strong> The Lost Mines</p>
-                            <p><strong>Background:</strong> Sage</p>
-                        </div>
-                        <div class="character-stats">
-                            <div class="stat">
-                                <span class="stat-name">STR</span>
-                                <span class="stat-value">9</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">DEX</span>
-                                <span class="stat-value">15</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">CON</span>
-                                <span class="stat-value">17</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">INT</span>
-                                <span class="stat-value">14</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">WIS</span>
-                                <span class="stat-value">11</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">CHA</span>
-                                <span class="stat-value">19</span>
-                            </div>
-                        </div>
-                        <a href="#" class="view-more">View Character Sheet</a>
-                    </div>
-                </div>
-                
-                <div class="character-card" data-campaign="campaign2">
-                    <div class="character-portrait">
-                        <img src="img/characters/ezmerelda.jpg" alt="Ezmerelda d'Avenir">
-                    </div>
-                    <div class="character-info">
-                        <h3>Ezmerelda d'Avenir</h3>
-                        <p class="character-subtitle">Human Ranger, Level 7</p>
-                        <div class="character-details">
-                            <p><strong>Player:</strong> Sarah</p>
-                            <p><strong>Campaign:</strong> Curse of Strahd</p>
-                            <p><strong>Background:</strong> Monster Hunter</p>
-                        </div>
-                        <div class="character-stats">
-                            <div class="stat">
-                                <span class="stat-name">STR</span>
-                                <span class="stat-value">14</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">DEX</span>
-                                <span class="stat-value">18</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">CON</span>
-                                <span class="stat-value">14</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">INT</span>
-                                <span class="stat-value">16</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">WIS</span>
-                                <span class="stat-value">16</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">CHA</span>
-                                <span class="stat-value">12</span>
-                            </div>
-                        </div>
-                        <a href="#" class="view-more">View Character Sheet</a>
-                    </div>
-                </div>
-                
-                <div class="character-card" data-campaign="campaign3">
-                    <div class="character-portrait">
-                        <img src="img/characters/harshnag.jpg" alt="Harshnag the Grim">
-                    </div>
-                    <div class="character-info">
-                        <h3>Harshnag the Grim</h3>
-                        <p class="character-subtitle">Frost Giant Barbarian, Level 6</p>
-                        <div class="character-details">
-                            <p><strong>Player:</strong> Chris</p>
-                            <p><strong>Campaign:</strong> Storm King's Thunder</p>
-                            <p><strong>Background:</strong> Outlander</p>
-                        </div>
-                        <div class="character-stats">
-                            <div class="stat">
-                                <span class="stat-name">STR</span>
-                                <span class="stat-value">20</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">DEX</span>
-                                <span class="stat-value">12</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">CON</span>
-                                <span class="stat-value">18</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">INT</span>
-                                <span class="stat-value">10</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">WIS</span>
-                                <span class="stat-value">14</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">CHA</span>
-                                <span class="stat-value">8</span>
-                            </div>
-                        </div>
-                        <a href="#" class="view-more">View Character Sheet</a>
-                    </div>
-                </div>
-                
-                <!-- Add a fourth character -->
-                <div class="character-card" data-campaign="campaign1">
-                    <div class="character-portrait">
-                        <img src="img/characters/drizzt.jpg" alt="Drizzt Do'Urden">
-                    </div>
-                    <div class="character-info">
-                        <h3>Drizzt Do'Urden</h3>
-                        <p class="character-subtitle">Drow Ranger, Level 6</p>
-                        <div class="character-details">
-                            <p><strong>Player:</strong> Alex</p>
-                            <p><strong>Campaign:</strong> The Lost Mines</p>
-                            <p><strong>Background:</strong> Outlander</p>
-                        </div>
-                        <div class="character-stats">
-                            <div class="stat">
-                                <span class="stat-name">STR</span>
-                                <span class="stat-value">14</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">DEX</span>
-                                <span class="stat-value">20</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">CON</span>
-                                <span class="stat-value">14</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">INT</span>
-                                <span class="stat-value">13</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">WIS</span>
-                                <span class="stat-value">16</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-name">CHA</span>
-                                <span class="stat-value">15</span>
-                            </div>
-                        </div>
-                        <a href="#" class="view-more">View Character Sheet</a>
-                    </div>
-                </div>
+                <!-- Characters will be loaded here -->
+            </div>
+
+            <!-- Character Import Controls -->
+            <div class="character-controls">
+                <select id="character-campaign-select">
+                    <option value="">Select Campaign</option>
+                </select>
+                <button class="import-character-btn">Import from D&D Beyond</button>
+                <button class="create-character-btn">Create New Character</button>
             </div>
         </section>
     </main>
-    
-    <footer>
-        <p>&copy; 2025 D&D Campaign Wiki | Created for your adventures</p>
-    </footer>
 
-    <!-- Character Sheet Modal -->
-    <div id="character-sheet-modal" class="modal">
-        <div class="modal-content character-sheet-modal">
-            <span class="close-modal">&times;</span>
-            
-            <div class="character-sheet-header">
-                <div class="character-portrait-large">
-                    <img id="modal-character-portrait" src="" alt="Character Portrait">
-                </div>
-                <div class="character-header-info">
-                    <h2 id="modal-character-name"></h2>
-                    <p id="modal-character-subtitle"></p>
-                    <div class="character-meta">
-                        <p><strong>Player:</strong> <span id="modal-player-name"></span></p>
-                        <p><strong>Campaign:</strong> <span id="modal-campaign-name"></span></p>
-                    </div>
-                </div>
+    <!-- DM Mode Controls -->
+    <button class="dm-mode-toggle" id="dm-mode-toggle">DM Mode</button>
+    
+    <div id="dm-password-modal" class="modal">
+        <div class="modal-content">
+            <h3>DM Authentication</h3>
+            <div class="form-group">
+                <label for="dm-password">Enter DM Password</label>
+                <input type="password" id="dm-password" class="form-control">
             </div>
-            
-            <div class="sheet-tabs">
-                <button class="sheet-tab-btn active" data-tab="stats">Stats</button>
-                <button class="sheet-tab-btn" data-tab="equipment">Equipment</button>
-                <button class="sheet-tab-btn" data-tab="spells">Spells</button>
-                <button class="sheet-tab-btn" data-tab="background">Background</button>
-                <button class="sheet-tab-btn" data-tab="notes">Notes</button>
-            </div>
-            
-            <!-- Stats Tab -->
-            <div id="stats-content" class="sheet-tab-content active">
-                <h3>Character Statistics</h3>
-                
-                <div class="stats-container">
-                    <!-- Ability Scores -->
-                    <div class="ability-scores">
-                        <h4>Ability Scores</h4>
-                        <div class="ability-grid">
-                            <div class="ability-score">
-                                <div class="ability-name">STR</div>
-                                <div class="ability-value" id="modal-str"></div>
-                                <div class="ability-modifier" id="modal-str-mod"></div>
-                            </div>
-                            <div class="ability-score">
-                                <div class="ability-name">DEX</div>
-                                <div class="ability-value" id="modal-dex"></div>
-                                <div class="ability-modifier" id="modal-dex-mod"></div>
-                            </div>
-                            <div class="ability-score">
-                                <div class="ability-name">CON</div>
-                                <div class="ability-value" id="modal-con"></div>
-                                <div class="ability-modifier" id="modal-con-mod"></div>
-                            </div>
-                            <div class="ability-score">
-                                <div class="ability-name">INT</div>
-                                <div class="ability-value" id="modal-int"></div>
-                                <div class="ability-modifier" id="modal-int-mod"></div>
-                            </div>
-                            <div class="ability-score">
-                                <div class="ability-name">WIS</div>
-                                <div class="ability-value" id="modal-wis"></div>
-                                <div class="ability-modifier" id="modal-wis-mod"></div>
-                            </div>
-                            <div class="ability-score">
-                                <div class="ability-name">CHA</div>
-                                <div class="ability-value" id="modal-cha"></div>
-                                <div class="ability-modifier" id="modal-cha-mod"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Combat Stats -->
-                    <div class="combat-stats">
-                        <h4>Combat</h4>
-                        <div class="combat-grid">
-                            <div class="combat-stat">
-                                <div class="combat-stat-name">HP</div>
-                                <div class="combat-stat-value" id="modal-hp"></div>
-                            </div>
-                            <div class="combat-stat">
-                                <div class="combat-stat-name">AC</div>
-                                <div class="combat-stat-value" id="modal-ac"></div>
-                            </div>
-                            <div class="combat-stat">
-                                <div class="combat-stat-name">Initiative</div>
-                                <div class="combat-stat-value" id="modal-initiative"></div>
-                            </div>
-                            <div class="combat-stat">
-                                <div class="combat-stat-name">Speed</div>
-                                <div class="combat-stat-value" id="modal-speed"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Proficiencies -->
-                    <div class="proficiencies">
-                        <h4>Proficiencies</h4>
-                        <div class="proficiency-columns">
-                            <div class="proficiency-column">
-                                <h4>Saving Throws</h4>
-                                <ul id="modal-saving-throws"></ul>
-                            </div>
-                            <div class="proficiency-column">
-                                <h4>Skills</h4>
-                                <ul id="modal-skills"></ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Features -->
-                    <div class="features">
-                        <h4>Features & Traits</h4>
-                        <div id="modal-features" class="features-list"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Equipment Tab -->
-            <div id="equipment-content" class="sheet-tab-content">
-                <h3>Equipment & Inventory</h3>
-                
-                <div class="equipment-container">
-                    <!-- Currency -->
-                    <div class="currency">
-                        <h4>Currency</h4>
-                        <div class="currency-grid">
-                            <div class="currency-item">
-                                <div class="currency-label">PP</div>
-                                <div class="currency-value" id="modal-pp"></div>
-                            </div>
-                            <div class="currency-item">
-                                <div class="currency-label">GP</div>
-                                <div class="currency-value" id="modal-gp"></div>
-                            </div>
-                            <div class="currency-item">
-                                <div class="currency-label">SP</div>
-                                <div class="currency-value" id="modal-sp"></div>
-                            </div>
-                            <div class="currency-item">
-                                <div class="currency-label">CP</div>
-                                <div class="currency-value" id="modal-cp"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Weapons -->
-                    <div class="weapons">
-                        <h4>Weapons</h4>
-                        <table class="equipment-table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Attack</th>
-                                    <th>Damage</th>
-                                    <th>Properties</th>
-                                </tr>
-                            </thead>
-                            <tbody id="modal-weapons"></tbody>
-                        </table>
-                    </div>
-                    
-                    <!-- Armor -->
-                    <div class="armor">
-                        <h4>Armor</h4>
-                        <table class="equipment-table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>AC</th>
-                                    <th>Properties</th>
-                                </tr>
-                            </thead>
-                            <tbody id="modal-armor"></tbody>
-                        </table>
-                    </div>
-                    
-                    <!-- Inventory -->
-                    <div class="inventory">
-                        <h4>Inventory</h4>
-                        <ul id="modal-inventory"></ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Spells Tab -->
-            <div id="spells-content" class="sheet-tab-content">
-                <h3>Spellcasting</h3>
-                
-                <div class="spells-container">
-                    <!-- Spellcasting Stats -->
-                    <div class="spellcasting-stats">
-                        <h4>Spellcasting Ability</h4>
-                        <div class="spell-stats">
-                            <div class="spell-stat">
-                                <div class="spell-stat-label">Class</div>
-                                <div class="spell-stat-value" id="modal-spellcasting-class"></div>
-                            </div>
-                            <div class="spell-stat">
-                                <div class="spell-stat-label">Ability</div>
-                                <div class="spell-stat-value" id="modal-spellcasting-ability"></div>
-                            </div>
-                            <div class="spell-stat">
-                                <div class="spell-stat-label">Save DC</div>
-                                <div class="spell-stat-value" id="modal-spell-save-dc"></div>
-                            </div>
-                            <div class="spell-stat">
-                                <div class="spell-stat-label">Attack</div>
-                                <div class="spell-stat-value" id="modal-spell-attack"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Spell Slots -->
-                    <div class="spell-slots">
-                        <h4>Spell Slots</h4>
-                        <div id="modal-spell-slots" class="spell-slots-grid"></div>
-                    </div>
-                    
-                    <!-- Spells Known -->
-                    <div class="spells-known">
-                        <h4>Spells Known</h4>
-                        <div id="modal-spells"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Background Tab -->
-            <div id="background-content" class="sheet-tab-content">
-                <h3>Background & Personality</h3>
-                
-                <div class="background-container">
-                    <!-- Background Description -->
-                    <div class="background-section">
-                        <h4>Background</h4>
-                        <p id="modal-background-description"></p>
-                    </div>
-                    
-                    <!-- Personality Traits -->
-                    <div class="background-details">
-                        <div class="background-detail">
-                            <h4>Personality</h4>
-                            <p id="modal-personality"></p>
-                        </div>
-                        <div class="background-detail">
-                            <h4>Ideals</h4>
-                            <p id="modal-ideals"></p>
-                        </div>
-                        <div class="background-detail">
-                            <h4>Bonds</h4>
-                            <p id="modal-bonds"></p>
-                        </div>
-                        <div class="background-detail">
-                            <h4>Flaws</h4>
-                            <p id="modal-flaws"></p>
-                        </div>
-                    </div>
-                    
-                    <!-- Backstory -->
-                    <div class="background-section">
-                        <h4>Backstory</h4>
-                        <p id="modal-backstory"></p>
-                    </div>
-                    
-                    <!-- Connections -->
-                    <div class="background-section">
-                        <h4>Connections</h4>
-                        <div id="modal-connections"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Notes Tab -->
-            <div id="notes-content" class="sheet-tab-content">
-                <h3>Notes & Development</h3>
-                
-                <div class="notes-container">
-                    <!-- Adventure Notes -->
-                    <div class="notes-section">
-                        <h4>Adventure Notes</h4>
-                        <div id="modal-adventure-notes"></div>
-                    </div>
-                    
-                    <!-- Character Development -->
-                    <div class="notes-section">
-                        <h4>Character Development</h4>
-                        <div id="modal-character-development"></div>
-                    </div>
-                    
-                    <!-- DM Notes (only visible in DM mode) -->
-                    <div class="notes-section dm-only">
-                        <h4>DM Notes</h4>
-                        <div id="modal-dm-notes"></div>
-                    </div>
-                </div>
-            </div>
+            <button class="btn btn-primary" id="verify-password">Verify</button>
+            <button class="btn" id="cancel-password">Cancel</button>
         </div>
     </div>
 
-    <!-- DM Mode Toggle Button -->
-    <button id="dm-toggle" class="dm-toggle-btn">DM Mode</button>
+    <!-- Character Template -->
+    <template id="character-card-template">
+        <div class="character-card">
+            <div class="character-portrait">
+                <img src="" alt="Character Portrait">
+                <div class="character-level">Level 1</div>
+            </div>
+            <div class="character-info">
+                <h3 class="character-name"></h3>
+                <p class="character-race-class"></p>
+                <div class="character-details">
+                    <span class="character-campaign"></span>
+                    <span class="character-background"></span>
+                </div>
+                <div class="character-stats">
+                    <div class="stat">
+                        <span class="stat-label">HP</span>
+                        <span class="stat-value hp"></span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">AC</span>
+                        <span class="stat-value ac"></span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Initiative</span>
+                        <span class="stat-value initiative"></span>
+                    </div>
+                </div>
+                <div class="character-description"></div>
+                <div class="dm-notes dm-only">
+                    <h4>DM Notes</h4>
+                    <div class="notes-content" contenteditable="true"></div>
+                </div>
+            </div>
+            <div class="character-actions">
+                <button class="view-details-btn">View Details</button>
+                <button class="edit-character-btn dm-only">Edit Character</button>
+            </div>
+        </div>
+    </template>
 
+    <script src="js/components.js"></script>
     <script src="js/dm-mode.js"></script>
     <script src="js/characters.js"></script>
 </body>

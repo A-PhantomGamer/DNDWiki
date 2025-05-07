@@ -3,202 +3,240 @@
  * This file handles DM mode across all pages of the D&D Campaign Wiki
  */
 
+const DM_PASSWORD = 'dm123';
+let isAuthenticated = false;
+
+// Initialize DM Mode
 document.addEventListener('DOMContentLoaded', function() {
-    // Constants
-    const DM_PASSWORD = 'dm123'; // In a real app, this would be handled server-side
+    const editableElements = document.querySelectorAll('.card-content, .card-description');
     
-    // Initialize DM mode
-    initDmMode();
-    
-    function initDmMode() {
-        const dmToggle = document.getElementById('dm-toggle');
+    // Make all content non-editable by default
+    editableElements.forEach(element => {
+        element.contentEditable = false;
         
-        if (!dmToggle) return; // Exit if toggle button doesn't exist on this page
-        
-        // Create custom DM login modal
-        const dmLoginModal = createDmLoginModal();
-        
-        // Set up toggle button
-        setupDmToggleButton(dmToggle, dmLoginModal);
-        
-        // Check if DM mode was previously active
-        checkDmMode(dmToggle);
-        
-        // Update DM-only content visibility
-        updateDmOnlyContentVisibility();
-    }
-    
-    function createDmLoginModal() {
-        // Remove any existing modal first
-        const existingModal = document.querySelector('.dm-login-modal');
-        if (existingModal) {
-            existingModal.remove();
-        }
-        
-        // Create new modal
-        const modal = document.createElement('div');
-        modal.className = 'dm-login-modal';
-        modal.innerHTML = `
-            <div class="dm-login-form">
-                <button class="close-btn" aria-label="Close">&times;</button>
-                <h3>DM Access Required</h3>
-                <p>Enter the Dungeon Master password to access restricted content.</p>
-                <input type="password" id="dm-password" placeholder="Enter DM password">
-                <button id="dm-login-btn">Access DM View</button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        
-        // Close button functionality
-        modal.querySelector('.close-btn').addEventListener('click', () => {
-            modal.classList.remove('active');
-            // Clear the password field when closing
-            document.getElementById('dm-password').value = '';
-        });
-        
-        // Login button functionality
-        modal.querySelector('#dm-login-btn').addEventListener('click', () => {
-            attemptDmLogin(modal);
-        });
-        
-        // Allow Enter key to submit
-        modal.querySelector('#dm-password').addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') {
-                attemptDmLogin(modal);
+        // Add click handler
+        element.addEventListener('click', function(e) {
+            if (!isAuthenticated) {
+                e.preventDefault();
+                return false;
             }
         });
-        
-        // Prevent clicks inside the form from closing the modal
-        modal.querySelector('.dm-login-form').addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-        
-        // Allow clicking outside the form to close the modal
-        modal.addEventListener('click', () => {
-            modal.classList.remove('active');
-            document.getElementById('dm-password').value = '';
-        });
-        
-        return modal;
+    });
+
+    setupDMAuthentication();
+});
+
+function setupDMAuthentication() {
+    const dmToggle = document.getElementById('dm-mode-toggle');
+    const dmModal = document.getElementById('dm-password-modal');
+    const verifyBtn = document.getElementById('verify-password');
+    const cancelBtn = document.getElementById('cancel-password');
+    const logoutBtn = document.getElementById('dm-logout');
+    const dmPanel = document.querySelector('.dm-panel');
+
+    // Hide DM panel by default
+    if (dmPanel) {
+        dmPanel.style.display = 'none';
     }
-    
-    function attemptDmLogin(modal) {
+
+    // Check if already authenticated
+    isAuthenticated = localStorage.getItem('dmAuthenticated') === 'true';
+    if (isAuthenticated) {
+        document.body.classList.add('dm-mode-active');
+        dmToggle.textContent = 'Exit DM Mode';
+        // Only show panel if authenticated
+        if (dmPanel) {
+            dmPanel.style.display = 'block';
+        }
+    }
+
+    // DM Mode Toggle
+    dmToggle.addEventListener('click', function() {
+        if (!isAuthenticated) {
+            dmModal.style.display = 'block';
+        } else {
+            disableDMMode();
+        }
+    });
+
+    // Verify Password
+    verifyBtn.addEventListener('click', function() {
         const password = document.getElementById('dm-password').value;
-        const dmToggle = document.getElementById('dm-toggle');
-        
         if (password === DM_PASSWORD) {
-            // Enter DM mode
-            activateDmMode(dmToggle);
-            
-            // Close modal and clear password
-            modal.classList.remove('active');
+            enableDMMode();
+            dmModal.style.display = 'none';
             document.getElementById('dm-password').value = '';
         } else {
-            alert('Incorrect password. DM access denied.');
+            alert('Incorrect password');
         }
-    }
+    });
+
+    // Cancel Login
+    cancelBtn.addEventListener('click', function() {
+        dmModal.style.display = 'none';
+        document.getElementById('dm-password').value = '';
+    });
+
+    // Logout
+    logoutBtn.addEventListener('click', disableDMMode);
+
+    // Load saved campaigns on startup
+    loadSavedCampaigns();
+    loadSavedContent();
+}
+
+function enableDMMode() {
+    isAuthenticated = true;
+    localStorage.setItem('dmAuthenticated', 'true');
+    document.body.classList.add('dm-mode-active');
+    const dmToggle = document.getElementById('dm-mode-toggle');
+    const dmPanel = document.querySelector('.dm-panel');
     
-    function activateDmMode(dmToggle) {
-        document.body.classList.add('dm-mode');
-        if (dmToggle) {
-            dmToggle.classList.add('active');
-            dmToggle.textContent = 'Exit DM View';
-        }
+    dmToggle.textContent = 'Exit DM Mode';
+    
+    // Show panel when enabling DM mode
+    if (dmPanel) {
+        dmPanel.style.display = 'block';
+    }
+
+    // Make content editable
+    const editableElements = document.querySelectorAll('.card-content, .card-description');
+    editableElements.forEach(element => {
+        element.contentEditable = true;
+        element.classList.add('dm-editable');
         
-        // Show all DM-only content
-        document.querySelectorAll('.dm-only').forEach(el => {
-            el.classList.add('visible');
+        // Add blur event to save content when editing stops
+        element.addEventListener('blur', function() {
+            if (isAuthenticated) {
+                saveContent(this);
+            }
         });
-        
-        // Store DM mode state
-        localStorage.setItem('dmModeActive', 'true');
-        document.cookie = "dmMode=active; path=/; max-age=86400"; // 24 hour expiry
-        
-        // Call page-specific DM mode functions if they exist
-        if (typeof updateDmSecretTabVisibility === 'function') {
-            updateDmSecretTabVisibility();
-        }
-        
-        if (typeof updateEditButtonsVisibility === 'function') {
-            updateEditButtonsVisibility();
-        }
-        
-        // Dispatch a custom event that other scripts can listen for
-        document.dispatchEvent(new CustomEvent('dmModeChanged', { detail: { active: true } }));
-    }
+    });
+
+    // Setup campaign management
+    setupCampaignManagement();
+}
+
+function disableDMMode() {
+    isAuthenticated = false;
+    localStorage.removeItem('dmAuthenticated');
+    document.body.classList.remove('dm-mode-active');
+    const dmToggle = document.getElementById('dm-mode-toggle');
+    const dmPanel = document.querySelector('.dm-panel');
     
-    function deactivateDmMode(dmToggle) {
-        document.body.classList.remove('dm-mode');
-        if (dmToggle) {
-            dmToggle.classList.remove('active');
-            dmToggle.textContent = 'DM Mode';
-        }
-        
-        // Hide all DM-only content
-        document.querySelectorAll('.dm-only').forEach(el => {
-            el.classList.remove('visible');
-        });
-        
-        // Update stored state
-        localStorage.setItem('dmModeActive', 'false');
-        document.cookie = "dmMode=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        
-        // Call page-specific DM mode functions if they exist
-        if (typeof updateDmSecretTabVisibility === 'function') {
-            updateDmSecretTabVisibility();
-        }
-        
-        if (typeof updateEditButtonsVisibility === 'function') {
-            updateEditButtonsVisibility();
-        }
-        
-        // Dispatch a custom event that other scripts can listen for
-        document.dispatchEvent(new CustomEvent('dmModeChanged', { detail: { active: false } }));
-    }
+    dmToggle.textContent = 'DM Mode';
     
-    function setupDmToggleButton(dmToggle, dmLoginModal) {
-        dmToggle.addEventListener('click', function() {
-            const isDmMode = document.body.classList.contains('dm-mode');
-            
-            if (isDmMode) {
-                deactivateDmMode(this);
-            } else {
-                // Show custom login modal
-                dmLoginModal.classList.add('active');
-                setTimeout(() => {
-                    document.getElementById('dm-password').focus();
-                }, 100);
+    // Hide panel when disabling DM mode
+    if (dmPanel) {
+        dmPanel.style.display = 'none';
+    }
+
+    // Make content non-editable
+    const editableElements = document.querySelectorAll('.card-content, .card-description');
+    editableElements.forEach(element => {
+        element.contentEditable = false;
+        element.classList.remove('dm-editable');
+    });
+}
+
+// Add these new functions
+function setupCampaignManagement() {
+    const addCampaignBtn = document.querySelector('.dm-panel button:nth-child(4)');
+    if (!addCampaignBtn) return;
+
+    addCampaignBtn.addEventListener('click', function() {
+        if (!isAuthenticated) return;
+
+        const campaignName = prompt('Enter new campaign name:');
+        if (!campaignName) return;
+
+        const campaignId = 'campaign_' + Date.now();
+        addCampaign(campaignId, campaignName);
+        saveCampaigns();
+    });
+}
+
+function addCampaign(id, name) {
+    const campaignSelect = document.getElementById('campaign-select');
+    if (!campaignSelect) return;
+
+    const option = document.createElement('option');
+    option.value = id;
+    option.textContent = name;
+    campaignSelect.appendChild(option);
+}
+
+function saveCampaigns() {
+    const campaignSelect = document.getElementById('campaign-select');
+    if (!campaignSelect) return;
+
+    const campaigns = Array.from(campaignSelect.options).map(option => ({
+        id: option.value,
+        name: option.textContent
+    }));
+
+    localStorage.setItem('campaigns', JSON.stringify(campaigns));
+}
+
+function loadSavedCampaigns() {
+    const savedCampaigns = localStorage.getItem('campaigns');
+    if (!savedCampaigns) return;
+
+    const campaigns = JSON.parse(savedCampaigns);
+    campaigns.forEach(campaign => {
+        addCampaign(campaign.id, campaign.name);
+    });
+}
+
+function saveContent(element) {
+    if (!isAuthenticated) return;
+    
+    const content = element.innerHTML;
+    const sectionCard = element.closest('.section-card');
+    if (!sectionCard) return;
+
+    const sectionId = sectionCard.id || `section_${Date.now()}`;
+    sectionCard.id = sectionId;
+
+    const campaignSelect = document.getElementById('campaign-select');
+    const currentCampaign = campaignSelect ? campaignSelect.value : 'default';
+    
+    // Save content with campaign context
+    const savedContent = JSON.parse(localStorage.getItem('dmContent') || '{}');
+    if (!savedContent[currentCampaign]) {
+        savedContent[currentCampaign] = {};
+    }
+    savedContent[currentCampaign][sectionId] = content;
+    
+    localStorage.setItem('dmContent', JSON.stringify(savedContent));
+    console.log(`Saved content for section ${sectionId} in campaign ${currentCampaign}`);
+}
+
+function loadSavedContent() {
+    const savedContent = localStorage.getItem('dmContent');
+    if (!savedContent) return;
+
+    const content = JSON.parse(savedContent);
+    const campaignSelect = document.getElementById('campaign-select');
+    const currentCampaign = campaignSelect ? campaignSelect.value : 'default';
+
+    if (content[currentCampaign]) {
+        Object.entries(content[currentCampaign]).forEach(([sectionId, html]) => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const contentElement = section.querySelector('.card-content, .card-description');
+                if (contentElement) {
+                    contentElement.innerHTML = html;
+                }
             }
         });
     }
-    
-    function checkDmMode(dmToggle) {
-        const isDmMode = localStorage.getItem('dmModeActive') === 'true' || 
-                         document.cookie.includes('dmMode=active');
-        
-        if (isDmMode) {
-            activateDmMode(dmToggle);
-        }
+}
+
+// Add campaign change listener
+document.addEventListener('DOMContentLoaded', function() {
+    const campaignSelect = document.getElementById('campaign-select');
+    if (campaignSelect) {
+        campaignSelect.addEventListener('change', loadSavedContent);
     }
-    
-    // Function to update DM-only content visibility
-    function updateDmOnlyContentVisibility() {
-        const isDmMode = document.body.classList.contains('dm-mode');
-        
-        document.querySelectorAll('.dm-only').forEach(el => {
-            if (isDmMode) {
-                el.classList.add('visible');
-            } else {
-                el.classList.remove('visible');
-            }
-        });
-    }
-    
-    // Export functions for use in other scripts
-    window.dmMode = {
-        activate: function() { activateDmMode(document.getElementById('dm-toggle')); },
-        deactivate: function() { deactivateDmMode(document.getElementById('dm-toggle')); },
-        isActive: function() { return document.body.classList.contains('dm-mode'); },
-        updateVisibility: updateDmOnlyContentVisibility
-    };
 });

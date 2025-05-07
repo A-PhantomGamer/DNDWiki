@@ -205,34 +205,176 @@
     color: #2c3e50;
 }
 
+/* Additional styles for the combat stats section */
+.combat-stats {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #d1c4a1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
 .combat-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
 .combat-stat {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #d1c4a1;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
 }
 
-.combat-stat-label {
+.combat-stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #8B0000;
+}
+
+.combat-stat-name {
     font-weight: bold;
     color: #2c3e50;
     text-transform: uppercase;
     font-size: 0.9em;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .combat-stat-value {
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: bold;
     color: #8B0000;
+}
+
+/* Spellcasting section styles */
+.spellcasting-info {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #d1c4a1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.spellcasting-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.spell-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #d1c4a1;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.spell-stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #8B0000;
+}
+
+.spell-stat-name {
+    font-weight: bold;
+    color: #2c3e50;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+}
+
+.spell-stat-value {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #8B0000;
+}
+
+/* Background and notes tab styles */
+.background-container, .notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.background-section, .notes-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #d1c4a1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.background-section h4, .notes-section h4 {
+    color: #8B0000;
+    margin-top: 0;
+    border-bottom: 1px solid #d1c4a1;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.editable-text {
+    min-height: 100px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px dashed #d1c4a1;
+    border-radius: 5px;
+    font-style: italic;
+    color: #666;
+}
+
+.notes-textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 10px;
+    border: 1px solid #d1c4a1;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Equipment tab styles */
+.equipment-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.weapons-section, .armor-section, .inventory-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #d1c4a1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.weapons-section h4, .armor-section h4, .inventory-section h4 {
+    color: #8B0000;
+    margin-top: 0;
+    border-bottom: 1px solid #d1c4a1;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.empty-message {
+    font-style: italic;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px dashed #d1c4a1;
+    border-radius: 5px;
 }
 
 /* Edit mode styles */
@@ -285,6 +427,33 @@ textarea.edit-input {
     resize: vertical;
 }
 
+/* Improve styling for the download button */
+.download-character-btn {
+    position: absolute;
+    top: 15px;
+    right: 200px; /* Position it further to the left of the edit button */
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.5px;
+}
+
+.download-character-btn:hover {
+    background-color: #1a252f;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.download-character-btn:active {
+    transform: translateY(0);
+}
+
 /* Responsive adjustments for character sheet */
 @media (max-width: 768px) {
     .modal-content {
@@ -308,3 +477,429 @@ textarea.edit-input {
         font-size: 0.9em;
     }
 }
+
+/* Styles for edit and save buttons */
+.edit-character-btn, .save-character-btn, .download-character-btn {
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    padding: 8px 15px;
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.edit-character-btn:hover, .save-character-btn:hover, .download-character-btn:hover {
+    background-color: #6d0000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.download-character-btn {
+    right: 180px;
+}
+
+/* Styles for edit inputs */
+.edit-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #d1c4a1;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.stat-input {
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Success message animation */
+.save-success-message, .delete-success-message, .export-success-message, .import-success-message, .pdf-success-message {
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Character sheet buttons container */
+.character-sheet-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #d1c4a1;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.edit-character-btn, .save-character-btn, .download-character-btn, 
+.export-character-btn, .delete-character-modal-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin: 5px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.5px;
+    flex: 1; /* Allow buttons to grow */
+    min-width: 120px; /* Minimum width for buttons */
+    max-width: 200px; /* Maximum width for buttons */
+}
+
+.edit-character-btn, .save-character-btn {
+    background-color: #8B0000;
+    color: white;
+}
+
+.download-character-btn, .export-character-btn {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.delete-character-modal-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.edit-character-btn:hover, .save-character-btn:hover {
+    background-color: #6d0000;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.download-character-btn:hover, .export-character-btn:hover {
+    background-color: #1a252f;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.delete-character-modal-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Remove any old button positioning */
+.edit-character-btn, .save-character-btn, .download-character-btn, 
+.export-character-btn, .delete-character-btn, .delete-character-modal-btn {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+}
+
+/* Responsive adjustments for buttons */
+@media (max-width: 768px) {
+    .character-sheet-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .edit-character-btn, .save-character-btn, .download-character-btn, 
+    .export-character-btn, .delete-character-modal-btn {
+        margin: 5px 0;
+        max-width: none;
+    }
+}
+
+/* Notification styles */
+.save-notification, .delete-success-message, 
+.export-success-message, .pdf-success-message,
+.import-success-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(39, 174, 96, 0.9);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeInOut 3s ease forwards;
+}
+
+.delete-success-message {
+    background-color: rgba(231, 76, 60, 0.9);
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, 20px); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    90% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -20px); }
+}
+
+/* Remove the old button positioning */
+.edit-character-btn, .save-character-btn, .download-character-btn, .export-character-btn {
+    position: static;
+    top: auto;
+    right: auto;
+}
+
+/* Editable content styles */
+.editable-content {
+    border: 1px dashed transparent;
+    padding: 2px 5px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    min-height: 1em;
+}
+
+.editable-content:hover {
+    border-color: #d1c4a1;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: text;
+}
+
+.editable-content:focus {
+    border-color: #8B0000;
+    background-color: rgba(255, 255, 255, 0.8);
+    outline: none;
+    box-shadow: 0 0 5px rgba(139, 0, 0, 0.3);
+}
+
+/* Style for ability scores when editable */
+.ability-score.editable-content {
+    cursor: text;
+}
+
+.ability-score.editable-content:focus {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Style for character name when editable */
+#modal-character-name.editable-content {
+    display: inline-block;
+    min-width: 200px;
+}
+
+/* Style for character subtitle when editable */
+#modal-character-subtitle.editable-content {
+    display: inline-block;
+    min-width: 150px;
+}
+
+/* Style for player and campaign name when editable */
+#modal-player-name.editable-content,
+#modal-campaign-name.editable-content {
+    display: inline-block;
+    min-width: 100px;
+}
+
+/* Style for editable text areas */
+.editable-text, .background-text, .personality-text, .ideals-text,
+.bonds-text, .flaws-text, .connections-text, .adventure-notes-text,
+.character-development-text, .dm-notes-text {
+    min-height: 100px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px dashed #d1c4a1;
+    border-radius: 5px;
+    font-style: italic;
+    color: #666;
+}
+
+.editable-text.editable-content:focus,
+.background-text.editable-content:focus,
+.personality-text.editable-content:focus,
+.ideals-text.editable-content:focus,
+.bonds-text.editable-content:focus,
+.flaws-text.editable-content:focus,
+.connections-text.editable-content:focus,
+.adventure-notes-text.editable-content:focus,
+.character-development-text.editable-content:focus,
+.dm-notes-text.editable-content:focus {
+    font-style: normal;
+    color: #333;
+}
+
+/* Style for equipment items when editable */
+.weapon-name.editable-content,
+.weapon-damage.editable-content,
+.weapon-properties.editable-content,
+.armor-name.editable-content,
+.armor-class.editable-content,
+.armor-properties.editable-content,
+.item-name.editable-content,
+.item-description.editable-content,
+.item-quantity.editable-content,
+.spell-name.editable-content,
+.spell-description.editable-content {
+    display: inline-block;
+    min-width: 50px;
+}
+
+/* Style for empty messages when editable */
+.empty-message.editable-content {
+    font-style: italic;
+    color: #666;
+}
+
+.empty-message.editable-content:focus {
+    font-style: normal;
+    color: #333;
+}
+
+/* Make sure textareas are properly styled when editable */
+textarea.editable {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #d1c4a1;
+}
+
+/* Add visual indicator for edit mode */
+.character-sheet-modal.edit-mode {
+    border: 2px solid #8B0000;
+}
+
+.character-sheet-modal.edit-mode::before {
+    content: "Edit Mode";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #8B0000;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Equipment and inventory items */
+.weapon-item, .armor-item, .inventory-item, .spell-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #d1c4a1;
+    border-radius: 5px;
+}
+
+.weapon-name, .armor-name, .item-name, .spell-name {
+    font-weight: bold;
+    color: #8B0000;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.weapon-damage, .armor-class, .item-quantity {
+    font-style: italic;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.weapon-properties, .armor-properties, .item-description, .spell-description {
+    color: #333;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+/* Make sure all editable text areas have proper styling */
+.editable-text {
+    min-height: 20px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px dashed #d1c4a1;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+/* Specific styling for different text areas */
+#modal-adventure-notes, #modal-character-development, #modal-dm-notes,
+.background-text, .personality-text, .ideals-text, .bonds-text, 
+.flaws-text, .connections-text {
+    min-height: 100px;
+    padding: 10px;
+}
+
+/* Add button for adding new items in edit mode */
+.add-item-btn, .add-weapon-btn, .add-armor-btn, .add-spell-btn {
+    display: none; /* Hidden by default, shown in edit mode */
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.edit-mode .add-item-btn, 
+.edit-mode .add-weapon-btn, 
+.edit-mode .add-armor-btn, 
+.edit-mode .add-spell-btn {
+    display: block;
+}
+
+.add-item-btn:hover, .add-weapon-btn:hover, .add-armor-btn:hover, .add-spell-btn:hover {
+    background-color: #1a252f;
+}
+
+/* Empty message styling */
+.empty-message {
+    font-style: italic;
+    color: #666;
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px dashed #d1c4a1;
+    border-radius: 5px;
+}
+
+/* Make sure all editable content has visual feedback */
+.editable-content {
+    border: 1px dashed transparent;
+    padding: 2px 5px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.edit-mode .editable-content:hover {
+    border-color: #d1c4a1;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: text;
+}
+
+.edit-mode .editable-content:focus {
+    border-color: #8B0000;
+    background-color: rgba(255, 255, 255, 0.8);
+    outline: none;
+    box-shadow: 0 0 5px rgba(139, 0, 0, 0.3);
+}
+
+/* Make sure the edit mode indicator is visible */
+.character-sheet-modal.edit-mode {
+    border: 2px solid #8B0000;
+}
+
+.character-sheet-modal.edit-mode::before {
+    content: "Edit Mode";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #8B0000;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+
+

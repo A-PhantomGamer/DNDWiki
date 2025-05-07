@@ -6,418 +6,104 @@
     <title>Lore - D&D Campaign Wiki</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dm-mode.css">
+    <link rel="stylesheet" href="css/lore.css">
 </head>
 <body>
-    <header>
-        <h1>D&D Campaign Wiki</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Campaigns</a></li>
-                <li><a href="characters.html">Characters</a></li>
-                <li><a href="npcs.html">NPCs</a></li>
-                <li><a href="world.html">World</a></li>
-                <li><a href="lore.html" class="active">Lore</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <main>
         <section id="lore">
-            <h2>Campaign Lore</h2>
-            
+            <h2>World Lore</h2>
+
+            <!-- Campaign Selector -->
             <div class="campaign-selector">
-                <label for="lore-campaign-select">Select Campaign:</label>
-                <select id="lore-campaign-select">
-                    <option value="campaign1">The Lost Mines</option>
-                    <option value="campaign2">Curse of Strahd</option>
-                    <option value="campaign3">Storm King's Thunder</option>
+                <select id="campaign-filter">
+                    <option value="">Select Campaign</option>
                 </select>
             </div>
-            
+
+            <!-- Lore Tabs -->
             <div class="lore-tabs">
                 <button class="tab-btn active" data-tab="legends">Legends & Myths</button>
                 <button class="tab-btn" data-tab="history">Historical Events</button>
                 <button class="tab-btn" data-tab="artifacts">Artifacts & Magic</button>
-                <button class="tab-btn" data-tab="religions">Religions & Deities</button>
+                <button class="tab-btn" data-tab="religion">Religions & Deities</button>
                 <button class="tab-btn dm-only" data-tab="secrets">DM Secrets</button>
             </div>
-            
-            <!-- Legends & Myths Content -->
-            <div id="legends-content" class="tab-content active">
-                <h3>Legends & Myths</h3>
-                <div class="lore-grid">
-                    <div class="lore-card">
-                        <div class="lore-card-header">
-                            <h4>The Forge of Spells</h4>
-                            <span class="lore-type">Ancient Legend</span>
-                        </div>
-                        <div class="lore-card-content">
-                            <p>Centuries ago, the dwarves and gnomes of Phandelver's Pact built a magical forge where enchanted items could be crafted. The most talented smiths from both races gathered to share their secrets and create wonders that would never again be replicated after the forge was lost.</p>
-                            <p>It is said that items crafted in the Forge of Spells were imbued with extraordinary powers, and that the forge itself was powered by magical energy drawn from the far reaches of the multiverse.</p>
-                        </div>
-                        <div class="lore-card-footer">
-                            <span class="lore-source">Source: Dwarven Chronicles</span>
-                            <button class="edit-lore-btn">Edit</button>
-                        </div>
-                    </div>
-                    
-                    <div class="lore-card">
-                        <div class="lore-card-header">
-                            <h4>The Curse of Strahd</h4>
-                            <span class="lore-type">Dark Legend</span>
-                        </div>
-                        <div class="lore-card-content">
-                            <p>The tale of Strahd von Zarovich is one of tragic love and terrible darkness. Once a noble warrior, his obsession with a young woman named Tatyana led him to make a pact with dark powers. On the day of his brother's wedding to Tatyana, Strahd murdered his brother and pursued Tatyana until she flung herself from the walls of Castle Ravenloft.</p>
-                            <p>In that moment, Strahd became a vampire, and the land of Barovia was torn from the material plane, surrounded by deadly mists that trap all who enter. It is said that Strahd is doomed to find Tatyana's reincarnation again and again, only to lose her each time.</p>
-                        </div>
-                        <div class="lore-card-footer">
-                            <span class="lore-source">Source: Vistani Tales</span>
-                            <button class="edit-lore-btn">Edit</button>
-                        </div>
-                    </div>
-                    
-                    <div class="lore-card">
-                        <div class="lore-card-header">
-                            <h4>The Ordning</h4>
-                            <span class="lore-type">Giant Mythology</span>
-                        </div>
-                        <div class="lore-card-content">
-                            <p>The giants of Faerûn follow a strict hierarchical structure known as the Ordning, established by their god Annam the All-Father. Storm giants stand at the top, followed by cloud, fire, frost, stone, and hill giants.</p>
-                            <p>When the Ordning was shattered, giants of all types began acting independently, seeking ways to elevate themselves in the eyes of Annam. Some sought ancient relics, others built massive structures, and the most aggressive began raiding settlements of the small folk.</p>
-                        </div>
-                        <div class="lore-card-footer">
-                            <span class="lore-source">Source: Giant Sagas</span>
-                            <button class="edit-lore-btn">Edit</button>
-                        </div>
-                    </div>
+
+            <!-- Legends & Myths Tab -->
+            <div id="legends" class="tab-content active">
+                <div class="content-header">
+                    <h3>Legends & Myths</h3>
+                    <button class="add-entry-btn dm-only">Add Legend</button>
                 </div>
-                
-                <button class="add-lore-btn">Add New Legend</button>
+                <div class="legends-grid" id="legends-container">
+                    <!-- Content will be loaded dynamically -->
+                </div>
             </div>
-            
-            <!-- Historical Events Content -->
-            <div id="history-content" class="tab-content">
-                <h3>Historical Events</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">
-                            <span>1372 DR</span>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>The Spellplague</h4>
-                            <p>When the goddess Mystra was murdered, magic itself went wild. Blue flames swept across Faerûn, transforming landscapes, creatures, and even people with unpredictable magical effects. Entire nations were lost, and new ones were created in their place.</p>
-                            <div class="timeline-footer">
-                                <span class="event-significance">Major World Event</span>
-                                <button class="edit-lore-btn">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">
-                            <span>1385 DR</span>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>The Sundering</h4>
-                            <p>A century after the Spellplague, the worlds of Abeir and Toril, long separated, began to overlap again. This cosmic event, known as the Sundering, was prophesied by Ao the Overgod. It resulted in the return of many deities thought lost and the restoration of the Weave of magic to its natural state.</p>
-                            <div class="timeline-footer">
-                                <span class="event-significance">Cosmic Event</span>
-                                <button class="edit-lore-btn">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">
-                            <span>1491 DR</span>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>The Breaking of the Ordning</h4>
-                            <p>For reasons unknown to even the giants themselves, Annam the All-Father shattered the Ordning, the divine hierarchy that had governed giant society for millennia. This caused chaos among giantkind as they sought to establish a new order and prove their worth to their god.</p>
-                            <div class="timeline-footer">
-                                <span class="event-significance">Regional Event</span>
-                                <button class="edit-lore-btn">Edit</button>
-                            </div>
-                        </div>
-                    </div>
+
+            <!-- Historical Events Tab -->
+            <div id="history" class="tab-content">
+                <div class="content-header">
+                    <h3>Historical Events</h3>
+                    <button class="add-entry-btn dm-only">Add Event</button>
                 </div>
-                
-                <button class="add-lore-btn">Add New Historical Event</button>
+                <div class="timeline" id="history-container">
+                    <!-- Content will be loaded dynamically -->
+                </div>
             </div>
-            
-            <!-- Artifacts & Magic Content -->
-            <div id="artifacts-content" class="tab-content">
-                <h3>Artifacts & Magic</h3>
-                <div class="artifacts-grid">
-                    <div class="artifact-card">
-                        <div class="artifact-image">
-                            <img src="img/artifacts/sunsword.jpg" alt="The Sunsword">
-                        </div>
-                        <div class="artifact-info">
-                            <h4>The Sunsword</h4>
-                            <p class="artifact-type">Legendary Weapon</p>
-                            <div class="artifact-description">
-                                <p>A legendary sun blade once wielded by Sergei von Zarovich, Strahd's brother. The weapon was broken long ago, but its hilt still contains the power to conjure a blade of pure radiance that is especially effective against undead.</p>
-                            </div>
-                            <div class="artifact-properties">
-                                <h5>Properties</h5>
-                                <ul>
-                                    <li>Conjures a blade of pure radiance</li>
-                                    <li>Deals additional radiant damage to undead</li>
-                                    <li>Emits bright sunlight in a 15-foot radius</li>
-                                    <li>Sentient weapon with its own personality</li>
-                                </ul>
-                            </div>
-                            <div class="artifact-history">
-                                <h5>History</h5>
-                                <p>The Sunsword was crafted for Sergei von Zarovich as a wedding gift. After Strahd murdered his brother, the sword was hidden away. It was later broken, and its hilt separated from the blade. The party recovered the hilt from the wizard Khazan's tower and restored its power.</p>
-                            </div>
-                            <div class="artifact-footer">
-                                <span class="artifact-status">Current Location: In party's possession</span>
-                                <button class="edit-lore-btn">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="artifact-card">
-                        <div class="artifact-image">
-                            <img src="img/artifacts/dragonstaff.jpg" alt="Dragonstaff of Ahghairon">
-                        </div>
-                        <div class="artifact-info">
-                            <h4>Dragonstaff of Ahghairon</h4>
-                            <p class="artifact-type">Unique Staff</p>
-                            <div class="artifact-description">
-                                <p>A wooden staff topped with a carving of a dragon's head. Created by Ahghairon, the first Lord Magister of Waterdeep, this staff grants its wielder power over dragons.</p>
-                            </div>
-                            <div class="artifact-properties">
-                                <h5>Properties</h5>
-                                <ul>
-                                    <li>Dragons must make a Wisdom save or be charmed for 1 minute</li>
-                                    <li>Grants advantage on Charisma checks against dragons</li>
-                                    <li>Can cast Dominate Monster on dragons once per day</li>
-                                </ul>
-                            </div>
-                            <div class="artifact-history">
-                                <h5>History</h5>
-                                <p>Ahghairon created this staff to help establish peaceful relations with the dragons near Waterdeep. It was lost during a dragon attack on the city centuries ago and was recently recovered from a hoard in the Spine of the World mountains.</p>
-                            </div>
-                            <div class="artifact-footer">
-                                <span class="artifact-status">Current Location: Unknown</span>
-                                <button class="edit-lore-btn">Edit</button>
-                            </div>
-                        </div>
-                    </div>
+
+            <!-- Artifacts & Magic Tab -->
+            <div id="artifacts" class="tab-content">
+                <div class="content-header">
+                    <h3>Artifacts & Magic</h3>
+                    <button class="add-entry-btn dm-only">Add Artifact</button>
                 </div>
-                
-                <button class="add-lore-btn">Add New Artifact</button>
+                <div class="artifacts-grid" id="artifacts-container">
+                    <!-- Content will be loaded dynamically -->
+                </div>
             </div>
-            
-            <!-- Religions & Deities Content -->
-            <div id="religions-content" class="tab-content">
-                <h3>Religions & Deities</h3>
-                <div class="pantheon-grid">
-                    <div class="deity-card">
-                        <div class="deity-image">
-                            <img src="img/deities/tyr.jpg" alt="Tyr">
-                        </div>
-                        <div class="deity-info">
-                            <h4>Tyr</h4>
-                            <p class="deity-title">The Even-Handed, God of Justice</p>
-                            <div class="deity-details">
-                                <p><strong>Alignment:</strong> Lawful Good</p>
-                                <p><strong>Domains:</strong> Justice, Law, War</p>
-                                <p><strong>Symbol:</strong> Balanced scales resting on a warhammer</p>
-                            </div>
-                            <div class="deity-description">
-                                <p>Tyr is the god of justice and law. He appears as a noble warrior missing his right hand, which he sacrificed to bind the wolf Fenrir. His followers value honor, fairness, and duty above all else.</p>
-                            </div>
-                            <div class="deity-worship">
-                                <h5>Worship</h5>
-                                <p>Temples to Tyr serve as courthouses and halls of justice. His priests often serve as judges, arbiters, and peacekeepers. They are expected to be fair and impartial in all their dealings, punishing the guilty and protecting the innocent regardless of status or wealth.</p>
-                            </div>
-                            <div class="deity-footer">
-                                <span class="deity-status">Major deity in the Sword Coast</span>
-                                <button class="edit-lore-btn">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="deity-card">
-                        <div class="deity-image">
-                            <img src="img/deities/lathander.jpg" alt="Lathander">
-                        </div>
-                        <div class="deity-info">
-                            <h4>Lathander</h4>
-                            <p class="deity-title">The Morninglord, God of Dawn</p>
-                            <div class="deity-details">
-                                <p><strong>Alignment:</strong> Neutral Good</p>
-                                <p><strong>Domains:</strong> Life, Light, Renewal</p>
-                                <p><strong>Symbol:</strong> Rising sun</p>
-                            </div>
-                            <div class="deity-description">
-                                <p>Lathander is the deity of creativity, dawn, renewal, birth, athletics, spring, self-perfection, vitality, and youth. He is known as the Morninglord, and he encourages new endeavors, ideas, and hope.</p>
-                            </div>
-                            <div class="deity-worship">
-                                <h5>Worship</h5>
-                                <p>Temples of Lathander face east to catch the first rays of the rising sun. Services are held at dawn and involve singing and offerings of fresh flowers and wine. His priests are optimistic and energetic, always looking forward to a bright future.</p>
-                            </div>
-                            <div class="deity-footer">
-                                <span class="deity-status">Widely worshipped across Faerûn</span>
-                                <button class="edit-lore-btn">Edit</button>
-                            </div>
-                        </div>
-                    </div>
+
+            <!-- Religions & Deities Tab -->
+            <div id="religion" class="tab-content">
+                <div class="content-header">
+                    <h3>Religions & Deities</h3>
+                    <button class="add-entry-btn dm-only">Add Deity</button>
                 </div>
-                
-                <button class="add-lore-btn">Add New Deity</button>
+                <div class="religion-grid" id="religion-container">
+                    <!-- Content will be loaded dynamically -->
+                </div>
             </div>
-            
-            <!-- DM Secrets Content (only visible in DM mode) -->
-            <div id="secrets-content" class="tab-content dm-only">
-                <h3>DM Secrets</h3>
-                <div class="secrets-container">
-                    <div class="secret-card">
-                        <div class="secret-header">
-                            <h4>The True Identity of the Black Spider</h4>
-                            <span class="secret-type">Plot Twist</span>
-                        </div>
-                        <div class="secret-content">
-                            <p>The Black Spider is actually Nezznar, a drow who serves a much larger organization known as the Kraken Society. His mission to secure the Forge of Spells is just one part of a larger plan to collect magical artifacts across the Sword Coast.</p>
-                            <p>If the players defeat him but don't kill him, he can become a recurring villain who seeks revenge while reporting back to his mysterious superiors.</p>
-                        </div>
-                        <div class="secret-footer">
-                            <span class="secret-status">Not Yet Revealed</span>
-                            <button class="edit-lore-btn">Edit</button>
-                        </div>
-                    </div>
-                    
-                    <div class="secret-card">
-                        <div class="secret-header">
-                            <h4>The True Nature of Ireena Kolyana</h4>
-                            <span class="secret-type">Character Secret</span>
-                        </div>
-                        <div class="secret-content">
-                            <p>Ireena is not just a random reincarnation of Tatyana - she is actually carrying a fragment of the divine spark that once belonged to a forgotten goddess of the dawn. This is why Strahd is drawn to her but can never fully possess her.</p>
-                            <p>If the players help her realize her true nature, she could potentially break Strahd's curse and free Barovia from the mists.</p>
-                        </div>
-                        <div class="secret-footer">
-                            <span class="secret-status">Hinted At</span>
-                            <button class="edit-lore-btn">Edit</button>
-                        </div>
-                    </div>
+
+            <!-- DM Secrets Tab (Only visible in DM mode) -->
+            <div id="secrets" class="tab-content dm-only">
+                <div class="content-header">
+                    <h3>DM Secrets</h3>
+                    <button class="add-entry-btn">Add Secret</button>
                 </div>
-                
-                <button class="add-lore-btn">Add New Secret</button>
+                <div class="secrets-grid" id="secrets-container">
+                    <!-- Content will be loaded dynamically -->
+                </div>
             </div>
         </section>
     </main>
-    
-    <footer>
-        <p>&copy; 2025 D&D Campaign Wiki | Created for your adventures</p>
-    </footer>
 
-    <!-- DM Mode Toggle Button -->
-    <button id="dm-toggle" class="dm-toggle-btn">DM Mode</button>
-
-    <!-- Lore Edit Modal -->
-    <div id="lore-edit-modal" class="modal">
-        <div class="modal-content lore-edit-modal">
-            <span class="close-modal">&times;</span>
-            <h3>Edit Lore Entry</h3>
-            
-            <form id="lore-edit-form">
-                <div class="form-group">
-                    <label for="lore-title">Title</label>
-                    <input type="text" id="lore-title" name="title" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="lore-type">Type</label>
-                    <input type="text" id="lore-type" name="type" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="lore-content">Content</label>
-                    <textarea id="lore-content" name="content" rows="6" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="lore-source">Source</label>
-                    <input type="text" id="lore-source" name="source">
-                </div>
-                
-                <div class="form-group dm-only">
-                    <label for="lore-status">Status</label>
-                    <select id="lore-status" name="status">
-                        <option value="Known">Known to Players</option>
-                        <option value="Hinted">Hinted At</option>
-                        <option value="Not Revealed">Not Yet Revealed</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit" class="submit-btn">Save Changes</button>
-                    <button type="button" class="cancel-btn">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- DM Mode Controls -->
+    <button class="dm-mode-toggle" id="dm-mode-toggle">DM Mode</button>
     
-    <!-- Add Lore Modal -->
-    <div id="add-lore-modal" class="modal">
-        <div class="modal-content add-lore-modal">
-            <span class="close-modal">&times;</span>
-            <h3>Add New Lore Entry</h3>
-            
-            <form id="add-lore-form">
-                <div class="form-group">
-                    <label for="new-lore-title">Title</label>
-                    <input type="text" id="new-lore-title" name="title" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="new-lore-type">Type</label>
-                    <input type="text" id="new-lore-type" name="type" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="new-lore-content">Content</label>
-                    <textarea id="new-lore-content" name="content" rows="6" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="new-lore-source">Source</label>
-                    <input type="text" id="new-lore-source" name="source">
-                </div>
-                
-                <div class="form-group dm-only">
-                    <label for="new-lore-status">Status</label>
-                    <select id="new-lore-status" name="status">
-                        <option value="Known">Known to Players</option>
-                        <option value="Hinted">Hinted At</option>
-                        <option value="Not Revealed">Not Yet Revealed</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="lore-category">Category</label>
-                    <select id="lore-category" name="category" required>
-                        <option value="legends">Legends & Myths</option>
-                        <option value="history">Historical Events</option>
-                        <option value="artifacts">Artifacts & Magic</option>
-                        <option value="religions">Religions & Deities</option>
-                        <option value="secrets">DM Secrets</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit" class="submit-btn">Add Lore</button>
-                    <button type="button" class="cancel-btn">Cancel</button>
-                </div>
-            </form>
+    <div id="dm-password-modal" class="modal">
+        <div class="modal-content">
+            <h3>DM Authentication</h3>
+            <div class="form-group">
+                <label for="dm-password">Enter DM Password</label>
+                <input type="password" id="dm-password" class="form-control">
+            </div>
+            <button class="btn btn-primary" id="verify-password">Verify</button>
+            <button class="btn" id="cancel-password">Cancel</button>
         </div>
     </div>
 
+    <script src="js/components.js"></script>
+    <script src="js/dm-mode.js"></script>
     <script src="js/lore.js"></script>
 </body>
 </html>
