@@ -1,0 +1,483 @@
+/* Character Creation Form Styles */
+.character-form {
+    max-width: 850px;
+    margin: 0 auto 40px;
+    background: url('../img/parchment-bg-light.jpg');
+    background-size: cover;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+    color: var(--text-color);
+    position: relative;
+}
+
+.character-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    z-index: 0;
+}
+
+.form-section {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.form-section h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.3em;
+}
+
+/* Basic Info Section */
+.basic-info-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+}
+
+/* Ability Scores Section */
+.ability-form-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+}
+
+.ability-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.ability-label {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.ability-input {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    padding: 0;
+    margin: 5px 0;
+    background: white;
+}
+
+.ability-modifier {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+/* Combat Stats Section */
+.combat-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.combat-stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.combat-stat-label {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.combat-stat-input {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    padding: 0;
+    margin: 5px 0;
+    background: white;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.skill-proficiency {
+    width: 20px;
+    height: 20px;
+}
+
+.skill-name {
+    flex: 1;
+    font-size: 0.9em;
+}
+
+.skill-ability {
+    color: #777;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.skill-bonus {
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Background & Features Section */
+.background-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.background-item {
+    margin-bottom: 15px;
+}
+
+.background-label {
+    display: block;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.background-textarea {
+    width: 100%;
+    min-height: 80px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px;
+    background: white;
+    resize: vertical;
+}
+
+/* Equipment & Inventory Section */
+.equipment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.equipment-textarea {
+    width: 100%;
+    min-height: 80px;
+    resize: vertical;
+}
+
+.currency-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.currency-item {
+    text-align: center;
+}
+
+.currency-item label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.currency-item input {
+    width: 80%;
+    text-align: center;
+}
+
+/* Features & Traits Section */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.features-textarea {
+    width: 100%;
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Appearance Section */
+.appearance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.appearance-textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+/* Spellcasting Section */
+.spellcasting-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.spell-slots-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.spell-slot-row {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.spell-slot-level {
+    width: 100px;
+    font-weight: bold;
+}
+
+.spells-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.spells-textarea {
+    width: 100%;
+    min-height: 60px;
+    resize: vertical;
+}
+
+/* Allies & Organizations Section */
+.allies-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.allies-textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+/* Notes Section */
+.notes-textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+/* Form Controls */
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(116, 37, 37, 0.2);
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.primary-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background: var(--primary-dark, #5a1d1d);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-small);
+}
+
+.secondary-btn {
+    background: white;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-small);
+}
+
+/* Decorative Elements */
+.form-decoration {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: url('../img/dnd-logo-small.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.decoration-top-left {
+    top: 20px;
+    left: 20px;
+}
+
+.decoration-bottom-right {
+    bottom: 20px;
+    right: 20px;
+    transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ability-form-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .combat-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .background-grid,
+    .equipment-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .ability-form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .combat-stats-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions button {
+        width: 100%;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .basic-info-grid,
+    .equipment-grid,
+    .appearance-grid,
+    .spellcasting-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .currency-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
