@@ -143,6 +143,7 @@ Created by [A-PhantomGamer]
 - [ ] PDF export functionality
 - [ ] Multi-user support
 - [ ] Cloud save integration
+- [ ] Map making
 
 ## Support
 For support, please open an issue in the GitHub repository.
