@@ -59,7 +59,7 @@ git clone https://github.com/](https://github.com/A-PhantomGamer/DNDWiki
 
 2. Open the project folder:
 ```bash
-cd dnd-campaign-wiki
+cd DNDWiki
 ```
 
 3. Open `index.html` in your web browser or set up a local server.
