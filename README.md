@@ -144,6 +144,12 @@ Created by [A-PhantomGamer]
 - [ ] Multi-user support
 - [ ] Cloud save integration
 - [ ] Map making
+- [ ] Ambient sound integration 
+- [ ] Dynamic lighting for maps
+- [ ] In-character chat/forum 
+- [ ] Random generators (NPCs, loot, dungeons)
+- [ ] Mobile app companion
+- [ ] VTT (Virtual Tabletop) integration
 
 ## Support
 For support, please open an issue in the GitHub repository.
