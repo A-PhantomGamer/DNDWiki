@@ -3,39 +3,41 @@
 ## Overview
 A dynamic web-based wiki system designed specifically for Dungeons & Dragons campaigns. This tool helps Dungeon Masters (DMs) and players organize, track, and manage their campaign information in an interactive and user-friendly way.
 
-## Features
+## Key Features  
 
-### Campaign Management
-- Create and manage multiple D&D campaigns
-- Track campaign progress and timeline
-- Store session notes and important events
-- Custom campaign settings and details
+### Campaign Management  
+- Create/manage multiple campaigns  
+- Session notes & timeline tracking  
+- Custom settings & progression  
+- **Planned**: Quest/goal tracker with XP rewards  
+- **Planned**: In-game calendar with weather/seasons  
 
-### Character Management
-- Player character profiles and sheets
-- NPC database with searchable entries
-- Character relationships and connections
-- Import/Export character data
+### Character Management  
+- Player/NPC profiles & sheets  
+- Relationship mapping  
+- Import/export character data  
+- **Planned**: Shared party inventory & gold tracker  
+- **Planned**: Hidden backstory vault (DM-only)  
 
-### World Building
-- Interactive world map with custom markers
-- Location descriptions and details
-- Faction and organization tracking
-- Historical events timeline
+### World Building  
+- Interactive maps with markers  
+- Faction/history tracking  
+- Location database  
+- **Planned**: Bestiary with biome/CR filters  
+- **Planned**: Trade economy simulator  
 
-### Lore System
-- Campaign-specific lore entries
-- Legends and myths database
-- Religious and deity information
-- Artifact and magical item catalog
-- DM-only secret information
+### Lore System  
+- Campaign-specific lore entries  
+- Deities, artifacts & myths  
+- DM-only secrets  
+- **Planned**: Prophecy/omen tracker  
+- **Planned**: Rumor generator  
 
-### DM Tools
-- Private DM notes and secrets
-- Campaign planning tools
-- Password-protected DM mode
-- Edit and update content on the fly
-
+### DM Tools  
+- Private notes & editing  
+- Password-protected DM mode  
+- **Planned**: Red herring tracker  
+- **Planned**: "Chekhov’s Gun" plot dashboard  
 ## Technical Details
 
 ### Built With
@@ -44,11 +46,10 @@ A dynamic web-based wiki system designed specifically for Dungeons & Dragons cam
 - Vanilla JavaScript
 - LocalStorage for data persistence
 
-### Key Features
-- Responsive design for all device sizes
-- No database required - runs entirely in browser
-- Offline functionality
-- Easy to deploy and share
+### Key Strengths  
+- Offline functionality  
+- Zero-install deployment  
+- Cross-device compatibility 
 
 ## Installation
 
@@ -135,14 +136,42 @@ Created by [A-PhantomGamer]
   - Lore system
   - DM tools
 
-## Planned Features
-- [ ] Dice roller integration
-- [ ] Combat tracker
-- [ ] Initiative tracker
-- [ ] Custom map markers
-- [ ] PDF export functionality
-- [ ] Multi-user support
-- [ ] Cloud save integration
+## Planned Features Roadmap  
+
+### Gameplay Enhancements  
+- [ ] Dice roller & macro system  
+- [ ] Combat/initiative tracker  
+- [ ] Condition/effect timers (e.g., poisoned)  
+- [ ] Rulebook quick-reference search  
+
+### Worldbuilding & Immersion  
+- [ ] Dynamic map lighting/fog-of-war  
+- [ ] Ambient sound integration (taverns, forests)  
+- [ ] Language/cipher builder  
+- [ ] Weather/environment simulator  
+
+### Player Interaction  
+- [ ] In-character chat/forum  
+- [ ] Secret voting system  
+- [ ] Downtime activity manager  
+- [ ] Achievement badges (e.g., "Dragon Slayer")  
+
+### DM Utilities  
+- [ ] Encounter difficulty calculator  
+- [ ] NPC relationship web visualizer  
+- [ ] Random generators (NPCs, loot, dungeons)  
+- [ ] Adventure hook library  
+
+### Technical & Accessibility  
+- [ ] PDF/eBook campaign exports  
+- [ ] Dark mode & custom themes  
+- [ ] Mobile app companion  
+- [ ] VTT (Roll20/Foundry) integration  
+
+### Long-Term Goals  
+- [ ] AI-assisted content generation  
+- [ ] AR/3D map viewer  
+- [ ] Collaborative cloud editing 
 
 ## Support
 For support, please open an issue in the GitHub repository.
