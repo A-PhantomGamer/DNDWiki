@@ -125,7 +125,6 @@ Created by [A-PhantomGamer]
 ## Acknowledgments
 - Inspired by the D&D community's need for better campaign management tools
 - Thanks to the D&D 5e community for inspiration and feedback
-- Special thanks to [Any Special Contributors]
 
 ## Version History
 - v1.0.0 (Current)
