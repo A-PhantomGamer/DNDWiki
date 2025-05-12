@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Campaign Wiki - Characters</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/characters.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <h1>DUNGEONS <img src="img/dnd-ampersand.png" alt="&" class="dnd-ampersand"> DRAGONS</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="characters.html" class="active">Characters</a></li>
+                    <li><a href="npcs.html">NPCs</a></li>
+                    <li><a href="world.html">World</a></li>
+                    <li><a href="lore.html">Lore</a></li>
+                    <li><a href="campaigns.html">Campaigns</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="character-list">
+            <h2>Characters</h2>
+            
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="player-filter">Filter by Player:</label>
+                    <select id="player-filter">
+                        <option value="all">All Players</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="campaign-filter">Filter by Campaign:</label>
+                    <select id="campaign-filter">
+                        <option value="all">All Campaigns</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+                
+                <button id="reset-filters-btn">Reset Filters</button>
+            </div>
+            
+            <div class="add-character">
+                <button id="add-character-btn">Add New Character</button>
+            </div>
+            
+            <div id="characters-container">
+                <!-- Character cards will be added here dynamically -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <img src="img/d20-icon.png" alt="D20 Icon" class="d20-icon">            
+            <p>&copy; 2025 D&D Campaign Wiki</p>        
+        </div>
+    </footer>
+    <script src="js/components.js"></script>
+    <script src="js/characters.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Edit Character Modal -->
+<div id="edit-character-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Edit Character</h2>
+        <form id="edit-character-form">
+            <input type="hidden" id="edit-character-id">
+            
+            <div class="form-group">
+                <label for="edit-character-name">Name:</label>
+                <input type="text" id="edit-character-name" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-character-player">Player:</label>
+                    <input type="text" id="edit-character-player">
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-character-campaign">Campaign:</label>
+                    <div class="campaign-select-container">
+                        <select id="edit-character-campaign">
+                            <option value="">-- Select Campaign --</option>
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                        <button type="button" id="add-campaign-btn" class="small-btn">+ New</button>
+                    </div>
+                    
+                    <!-- New Campaign Form (hidden by default) -->
+                    <div id="new-campaign-form" class="new-campaign-form" style="display: none;">
+                        <input type="text" id="new-campaign-input" placeholder="Enter new campaign name">
+                        <div class="form-buttons">
+                            <button type="button" id="confirm-campaign-btn" class="small-btn confirm-btn">Add</button>
+                            <button type="button" id="cancel-campaign-btn" class="small-btn cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-character-race">Race:</label>
+                    <input type="text" id="edit-character-race" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-character-class">Class:</label>
+                    <input type="text" id="edit-character-class" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-character-level">Level:</label>
+                    <input type="number" id="edit-character-level" min="1" max="20" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-character-background">Background:</label>
+                    <input type="text" id="edit-character-background" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-character-alignment">Alignment:</label>
+                    <input type="text" id="edit-character-alignment" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <h3>Ability Scores</h3>
+                <div class="stats-editor">
+                    <div class="stat-edit">
+                        <label for="edit-character-strength">STR:</label>
+                        <input type="number" id="edit-character-strength" min="1" max="30" required>
+                    </div>
+                    
+                    <div class="stat-edit">
+                        <label for="edit-character-dexterity">DEX:</label>
+                        <input type="number" id="edit-character-dexterity" min="1" max="30" required>
+                    </div>
+                    
+                    <div class="stat-edit">
+                        <label for="edit-character-constitution">CON:</label>
+                        <input type="number" id="edit-character-constitution" min="1" max="30" required>
+                    </div>
+                    
+                    <div class="stat-edit">
+                        <label for="edit-character-intelligence">INT:</label>
+                        <input type="number" id="edit-character-intelligence" min="1" max="30" required>
+                    </div>
+                    
+                    <div class="stat-edit">
+                        <label for="edit-character-wisdom">WIS:</label>
+                        <input type="number" id="edit-character-wisdom" min="1" max="30" required>
+                    </div>
+                    
+                    <div class="stat-edit">
+                        <label for="edit-character-charisma">CHA:</label>
+                        <input type="number" id="edit-character-charisma" min="1" max="30" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit-character-description">Description:</label>
+                <textarea id="edit-character-description" rows="4" required></textarea>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="save-btn">Save Character</button>
+            </div>
+        </form>
+    </div>
+</div>
