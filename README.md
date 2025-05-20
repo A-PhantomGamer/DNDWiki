@@ -58,7 +58,7 @@ This project is available under the MIT License. See the LICENSE file for detail
 
 *May your dice roll high and your stories be legendary!*
 
-```
+
                .........
               :~, *   * ~,
               : ~, *   * ~.
@@ -73,4 +73,3 @@ This project is available under the MIT License. See the LICENSE file for detail
                              ~, *  : *  ,~
                                ~,  :  ,~
                                  ~,:,~
-```
