@@ -49,7 +49,8 @@ Many text areas in the wiki support Markdown formatting:- `# Heading 1` - Create
 This wiki works best in modern browsers:
 - Chrome (recommended)
 - Firefox
-- Edge- Safari
+- Edge
+- Safari
 ## License
 This project is available under the MIT License. See the LICENSE file for details.
 ## Acknowledgments
