@@ -41,10 +41,14 @@ This wiki can be customized to fit your campaign's specific needs:
 - Extend JavaScript functionality for additional features
 ## Markdown Support
 Many text areas in the wiki support Markdown formatting:- `# Heading 1` - Creates a large heading
-- `## Heading 2` - Creates a medium heading- `**Bold text**` - Makes text **bold**
-- `*Italic text*` - Makes text *italic*- `[Link text](https://example.com)` - Creates a link
-- `- Item` or `* Item` - Creates a bullet list- `1. Item` - Creates a numbered list
-- `> Quote` - Creates a blockquote- `` `code` `` - Formats text as `code`
+- `## Heading 2` - Creates a medium heading
+- `**Bold text**` - Makes text **bold**
+- `*Italic text*` - Makes text *italic*
+- `[Link text](https://example.com)` - Creates a link
+- `- Item` or `* Item` - Creates a bullet list
+- `1. Item` - Creates a numbered list
+- `> Quote` - Creates a blockquote
+- `` `code` `` - Formats text as `code`
 ## Browser Compatibility
 This wiki works best in modern browsers:
 - Chrome (recommended)
