@@ -66,6 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load characters from localStorage or use sample data
     let characters = JSON.parse(localStorage.getItem('characters')) || sampleCharacters;
     
+    // Load campaigns from shared system
+    let campaigns = SharedCampaigns.getAllCampaigns();
+    
     // Track current filters
     let currentFilters = {
         player: 'all',
@@ -77,9 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const playerFilter = document.getElementById('player-filter');
         const campaignFilter = document.getElementById('campaign-filter');
         
-        // Get unique players and campaigns
+        // Get unique players
         const players = ['all', ...new Set(characters.map(char => char.player).filter(Boolean))];
-        const campaigns = ['all', ...new Set(characters.map(char => char.campaign).filter(Boolean))];
         
         // Populate player filter
         playerFilter.innerHTML = '';
@@ -90,12 +92,21 @@ document.addEventListener('DOMContentLoaded', function() {
             playerFilter.appendChild(option);
         });
         
-        // Populate campaign filter
+        // Populate campaign filter using shared campaigns
         campaignFilter.innerHTML = '';
+        
+        // Add "All Campaigns" option
+        const allOption = document.createElement('option');
+        allOption.value = 'all';
+        allOption.textContent = 'All Campaigns';
+        campaignFilter.appendChild(allOption);
+        
+        // Add all campaigns from shared system
+        campaigns = SharedCampaigns.getAllCampaigns();
         campaigns.forEach(campaign => {
             const option = document.createElement('option');
-            option.value = campaign;
-            option.textContent = campaign === 'all' ? 'All Campaigns' : campaign;
+            option.value = campaign.name;
+            option.textContent = campaign.name;
             campaignFilter.appendChild(option);
         });
         
@@ -114,16 +125,16 @@ document.addEventListener('DOMContentLoaded', function() {
             emptyOption.textContent = '-- Select Campaign --';
             editCampaignSelect.appendChild(emptyOption);
             
-            // Add all campaigns (excluding 'all')
-            campaigns.filter(c => c !== 'all').forEach(campaign => {
+            // Add all campaigns from shared system
+            campaigns.forEach(campaign => {
                 const option = document.createElement('option');
-                option.value = campaign;
-                option.textContent = campaign;
+                option.value = campaign.name;
+                option.textContent = campaign.name;
                 editCampaignSelect.appendChild(option);
             });
             
             // Restore selection if possible
-            if (currentSelection && campaigns.includes(currentSelection)) {
+            if (currentSelection && campaigns.some(c => c.name === currentSelection)) {
                 editCampaignSelect.value = currentSelection;
             }
         }
@@ -407,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('characters', JSON.stringify(characters));
     }
     
-    // Function to add a new campaign
+    // Function to add a new campaign directly from the character edit form
     function addNewCampaign() {
         const newCampaignInput = document.getElementById('new-campaign-input');
         const campaignSelect = document.getElementById('edit-character-campaign');
@@ -419,11 +430,26 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const newCampaignName = newCampaignInput.value.trim();
         
-        // Check if campaign already exists
-        if ([...campaignSelect.options].some(opt => opt.value === newCampaignName)) {
+        // Check if campaign already exists in shared system
+        if (campaigns.some(c => c.name === newCampaignName)) {
             alert('This campaign already exists');
             return;
         }
+        
+        // Create new campaign object
+        const newCampaign = {
+            id: Date.now().toString(),
+            name: newCampaignName,
+            dm: '',
+            status: 'active',
+            startDate: new Date().toISOString().split('T')[0]
+        };
+        
+        // Add to shared campaigns
+        SharedCampaigns.addCampaign(newCampaign);
+        
+        // Refresh campaigns list
+        campaigns = SharedCampaigns.getAllCampaigns();
         
         // Add new option to select
         const newOption = document.createElement('option');

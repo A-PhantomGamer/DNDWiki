@@ -1,0 +1,537 @@
+/* Campaigns page specific styles */
+.campaigns-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.campaigns-section h2 {
+    color: #7c2020;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #7c2020;
+    padding-bottom: 0.5rem;
+    font-family: 'Modesto Condensed', 'Times New Roman', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Campaign selector */
+.campaign-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.campaign-selector label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.campaign-selector select {
+    padding: 0.5rem;
+    border: 1px solid #d3b17d;
+    border-radius: 4px;
+    background-color: #f9f5e7;
+    min-width: 200px;
+    font-family: inherit;
+}
+
+#add-campaign-btn {
+    background-color: #7c2020;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+#add-campaign-btn:hover {
+    background-color: #5e1818;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background-color: #f9f5e7;
+    border: 1px dashed #d3b17d;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.empty-state p {
+    color: #7c5020;
+    font-style: italic;
+}
+
+/* Campaign container */
+.campaign-container {
+    background-color: #f9f5e7;
+    border: 1px solid #d3b17d;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.campaign-header {
+    background-color: #7c2020;
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.campaign-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'Modesto Condensed', 'Times New Roman', serif;
+    letter-spacing: 1px;
+}
+
+.campaign-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.campaign-actions button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.campaign-actions button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.delete-campaign-btn {
+    background-color: rgba(255, 0, 0, 0.2) !important;
+}
+
+.delete-campaign-btn:hover {
+    background-color: rgba(255, 0, 0, 0.3) !important;
+}
+
+/* Campaign details */
+.campaign-details {
+    padding: 1.5rem;
+}
+
+.campaign-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f0e8d0;
+    border-radius: 6px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+}
+
+.meta-label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+    color: #7c5020;
+}
+
+/* Campaign boxes */
+.campaign-box {
+    margin-bottom: 2rem;
+    background-color: white;
+    border: 1px solid #d3b17d;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.box-header {
+    background-color: #d3b17d;
+    padding: 0.7rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-header h4 {
+    margin: 0;
+    color: #5e3c18;
+    font-family: 'Modesto Condensed', 'Times New Roman', serif;
+    font-size: 1.2rem;
+}
+
+.edit-section-btn {
+    background-color: #7c5020;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+}
+
+.edit-section-btn:hover {
+    background-color: #5e3c18;
+}
+
+.box-content {
+    padding: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Sessions list */
+.campaign-sessions {
+    margin-bottom: 2rem;
+}
+
+.sessions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #d3b17d;
+}
+
+.sessions-header h4 {
+    margin: 0;
+    color: #7c5020;
+    font-family: 'Modesto Condensed', 'Times New Roman', serif;
+    font-size: 1.2rem;
+}
+
+.add-session-btn, .add-quest-btn {
+    background-color: #7c5020;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+}
+
+.add-session-btn:hover, .add-quest-btn:hover {
+    background-color: #5e3c18;
+}
+
+.sessions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.session-card {
+    background-color: white;
+    border: 1px solid #d3b17d;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.session-header {
+    background-color: #e6d5b8;
+    padding: 0.7rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session-title {
+    margin: 0;
+    font-weight: bold;
+}
+
+.session-number {
+    background-color: #7c5020;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.session-date {
+    color: #7c5020;
+    font-size: 0.9rem;
+}
+
+.session-content {
+    padding: 1rem;
+}
+
+.session-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+}
+
+.session-actions button {
+    background-color: #f0e8d0;
+    border: 1px solid #d3b17d;
+    color: #7c5020;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+}
+
+.session-actions button:hover {
+    background-color: #e6d5b8;
+}
+
+/* Quests list */
+.quests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.quest-card {
+    background-color: white;
+    border: 1px solid #d3b17d;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.quest-header {
+    background-color: #e6d5b8;
+    padding: 0.7rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quest-title {
+    margin: 0;
+    font-weight: bold;
+}
+
+.quest-status {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-active {
+    background-color: #4caf50;
+    color: white;
+}
+
+.status-completed {
+    background-color: #2196f3;
+    color: white;
+}
+
+.status-failed {
+    background-color: #f44336;
+    color: white;
+}
+
+.status-abandoned {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+.quest-content {
+    padding: 1rem;
+}
+
+.quest-giver {
+    font-style: italic;
+    color: #7c5020;
+    margin-bottom: 0.5rem;
+}
+
+.quest-reward {
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+.quest-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+}
+
+.quest-actions button {
+    background-color: #f0e8d0;
+    border: 1px solid #d3b17d;
+    color: #7c5020;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+}
+
+.quest-actions button:hover {
+    background-color: #e6d5b8;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #f9f5e7;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #d3b17d;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.close-modal {
+    color: #7c5020;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #5e3c18;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #5e3c18;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #d3b17d;
+    border-radius: 4px;
+    background-color: white;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.save-btn {
+    background-color: #7c2020;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.save-btn:hover {
+    background-color: #5e1818;
+}
+
+/* Markdown help styling */
+.markdown-help {
+    list-style-type: none;
+    padding: 0;
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+    background-color: #f0e8d0;
+    border: 1px solid #d3b17d;
+    border-radius: 4px;
+    padding: 0.75rem;
+}
+
+.markdown-help li {
+    margin-bottom: 0.5rem;
+}
+
+.markdown-help code {
+    background-color: #e6d5b8;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-family: monospace;
+    border: 1px solid #d3b17d;
+}
+
+.form-help {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.form-help p {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .campaign-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .campaign-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .campaign-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 5% auto;
+    }
+}

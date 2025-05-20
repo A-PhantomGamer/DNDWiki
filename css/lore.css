@@ -1,0 +1,321 @@
+/* Lore page specific styles */
+.lore-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.lore-section h2 {
+    color: #7c2020;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #7c2020;
+    padding-bottom: 0.5rem;
+    font-family: 'Modesto Condensed', 'Times New Roman', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Campaign selector */
+.campaign-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.campaign-selector label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.campaign-selector select {
+    padding: 0.5rem;
+    border: 1px solid #d3b17d;
+    border-radius: 4px;
+    background-color: #f9f5e7;
+    min-width: 200px;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+#add-campaign-btn {
+    background-color: #2d7c20;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#add-campaign-btn:hover {
+    background-color: #1e5e18;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background-color: #f9f5e7;
+    border-radius: 8px;
+    border: 1px dashed #d3b17d;
+}
+
+.empty-state p {
+    color: #7c5020;
+    font-style: italic;
+}
+
+/* Lore container */
+.lore-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.lore-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.campaign-title {
+    font-size: 1.8rem;
+    color: #7c2020;
+    margin: 0;
+    font-family: 'Modesto Condensed', 'Times New Roman', serif;
+}
+
+.lore-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-campaign-btn {
+    background-color: #7c5020;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-campaign-btn:hover {
+    background-color: #5e3c18;
+}
+
+.delete-campaign-btn {
+    background-color: #7c2020;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-campaign-btn:hover {
+    background-color: #5e1818;
+}
+
+/* Lore boxes */
+.lore-box {
+    background-color: #f9f5e7;
+    border-radius: 8px;
+    border: 1px solid #d3b17d;
+    overflow: hidden;
+}
+
+.lore-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e6d5b8;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #d3b17d;
+}
+
+.lore-box-header h4 {
+    margin: 0;
+    color: #7c2020;
+    font-family: 'Modesto Condensed', 'Times New Roman', serif;
+    font-size: 1.2rem;
+}
+
+.edit-section-btn {
+    background-color: transparent;
+    color: #7c5020;
+    border: 1px solid #7c5020;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.edit-section-btn:hover {
+    background-color: #7c5020;
+    color: white;
+}
+
+.lore-content {
+    padding: 1.5rem;
+    min-height: 100px;
+}
+
+/* Empty content placeholder */
+.lore-content:empty::before {
+    content: "No content yet. Click 'Edit' to add content.";
+    color: #999;
+    font-style: italic;
+}
+
+/* Timeline layout */
+.lore-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+/* Markdown content styling */
+.lore-content h1, .lore-content h2, .lore-content h3 {
+    color: #7c2020;
+    margin-top: 0;
+}
+
+.lore-content ul, .lore-content ol {
+    padding-left: 1.5rem;
+}
+
+.lore-content blockquote {
+    border-left: 3px solid #d3b17d;
+    margin-left: 0;
+    padding-left: 1rem;
+    color: #7c5020;
+    font-style: italic;
+}
+
+.lore-content img {
+    max-width: 100%;
+    border-radius: 4px;
+    border: 1px solid #d3b17d;
+}
+
+.lore-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.lore-content th, .lore-content td {
+    border: 1px solid #d3b17d;
+    padding: 0.5rem;
+}
+
+.lore-content th {
+    background-color: #e6d5b8;
+}
+
+/* Markdown help styling */
+.markdown-help {
+    list-style-type: none;
+    padding: 0;
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+    background-color: #f0e8d0;
+    border: 1px solid #d3b17d;
+    border-radius: 4px;
+    padding: 0.75rem;
+}
+
+.markdown-help li {
+    margin-bottom: 0.5rem;
+}
+
+.markdown-help code {
+    background-color: #e6d5b8;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-family: monospace;
+    border: 1px solid #d3b17d;
+}
+
+.form-help {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.form-help p {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .campaign-selector {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .campaign-selector select {
+        max-width: none;
+    }
+    
+    .lore-timeline {
+        grid-template-columns: 1fr;
+    }
+    
+    .lore-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .lore-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #f9f5e7;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #d3b17d;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.close-modal {
+    color: #7c5020;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #5e3c18;
+}
+

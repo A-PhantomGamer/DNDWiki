@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Campaign Wiki - Books</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/books.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <h1>DUNGEONS <img src="img/dnd-ampersand.png" alt="&" class="dnd-ampersand"> DRAGONS</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="characters.html">Characters</a></li>
+                    <li><a href="npcs.html">NPCs</a></li>
+                    <li><a href="lore.html">Lore</a></li>
+                    <li><a href="campaigns.html">Campaigns</a></li>
+                    <li><a href="books.html" class="active">Books</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="books-section">
+            <h2>D&D Books Library</h2>
+            <p class="section-description">Access your D&D rulebooks, sourcebooks, and adventure modules.</p>
+            
+            <div class="books-controls">
+                <div class="search-box">
+                    <input type="text" id="book-search" placeholder="Search books...">
+                    <button id="search-btn"><i class="fa fa-search"></i>Search</button>
+                </div>
+                
+                <div class="filter-controls">
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="core">Core Rulebooks</option>
+                        <option value="adventure">Adventure Modules</option>
+                        <option value="setting">Campaign Settings</option>
+                        <option value="supplement">Supplements</option>
+                        <option value="homebrew">Homebrew Content</option>
+                    </select>
+                    
+                    <button id="upload-book-btn">Upload New Book</button>
+                </div>
+            </div>
+            
+            <div id="books-container" class="books-grid">
+                <!-- Books will be added here dynamically -->
+            </div>
+            
+            <!-- Book upload modal -->
+            <div id="upload-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2>Upload New Book</h2>
+                    <form id="upload-book-form">
+                        <div class="form-group">
+                            <label for="book-title">Book Title:</label>
+                            <input type="text" id="book-title" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="book-author">Author/Publisher:</label>
+                            <input type="text" id="book-author" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="book-category">Category:</label>
+                            <select id="book-category" required>
+                                <option value="">-- Select Category --</option>
+                                <option value="core">Core Rulebook</option>
+                                <option value="adventure">Adventure Module</option>
+                                <option value="setting">Campaign Setting</option>
+                                <option value="supplement">Supplement</option>
+                                <option value="homebrew">Homebrew Content</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="book-description">Description:</label>
+                            <textarea id="book-description" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="book-cover">Cover Image URL:</label>
+                            <input type="text" id="book-cover" placeholder="https://example.com/image.jpg">
+                            <p class="form-hint">Leave blank for default cover</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="book-file">PDF File:</label>
+                            <input type="file" id="book-file" accept=".pdf">
+                            <p class="form-hint">Max file size: 50MB</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="book-url">Or External URL:</label>
+                            <input type="url" id="book-url" placeholder="https://example.com/book.pdf">
+                            <p class="form-hint">Direct link to PDF file</p>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="save-btn">Upload Book</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- PDF viewer modal -->
+            <div id="pdf-viewer-modal" class="modal pdf-modal" style="display: none;">
+                <div class="modal-content pdf-modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2 id="pdf-title">Book Title</h2>
+                    <div class="pdf-controls">
+                        <button id="download-pdf-btn">Download PDF</button>
+                        <button id="close-pdf-btn">Close Viewer</button>
+                    </div>
+                    <div id="pdf-container">
+                        <iframe id="pdf-iframe" src="" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <img src="img/d20-icon.png" alt="D20 Icon" class="d20-icon">
+            <p>&copy; 2025 D&D Campaign Wiki</p>
+        </div>
+    </footer>
+
+    <script src="js/components.js"></script>
+    <script src="js/books.js"></script>
+</body>
+</html>

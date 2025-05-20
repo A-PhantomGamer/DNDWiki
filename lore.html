@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Campaign Wiki - Lore</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/lore.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <h1>DUNGEONS <img src="img/dnd-ampersand.png" alt="&" class="dnd-ampersand"> DRAGONS</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="characters.html">Characters</a></li>
+                    <li><a href="npcs.html">NPCs</a></li>
+                    <li><a href="lore.html" class="active">Lore</a></li>
+                    <li><a href="campaigns.html">Campaigns</a></li>
+                    <li><a href="books.html">Books</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="lore-section">
+            <h2>Campaign Lore</h2>
+            
+            <div class="campaign-selector">
+                <label for="campaign-select">Select Campaign:</label>
+                <select id="campaign-select">
+                    <option value="">-- Select Campaign --</option>
+                    <!-- Options will be populated dynamically -->
+                </select>
+                <button id="add-campaign-btn">Add New Campaign</button>
+            </div>
+            
+            <div id="campaign-lore-container">
+                <!-- Campaign lore content will be displayed here -->
+                <div class="empty-state">
+                    <p>Select a campaign from the dropdown above or create a new one to begin.</p>
+                </div>
+            </div>
+            
+            <!-- Template for campaign lore content -->
+            <template id="campaign-lore-template">
+                <div class="lore-container">
+                    <div class="lore-header">
+                        <h3 class="campaign-title">Campaign Title</h3>
+                        <div class="lore-actions">
+                            <button class="edit-campaign-btn">Edit Campaign</button>
+                            <button class="delete-campaign-btn">Delete</button>
+                        </div>
+                    </div>
+                    
+                    <div class="lore-box world-overview">
+                        <div class="lore-box-header">
+                            <h4>World Overview</h4>
+                            <button class="edit-section-btn" data-section="overview">Edit</button>
+                        </div>
+                        <div class="lore-content overview-content">
+                            <!-- Overview content will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div class="lore-timeline">
+                        <div class="lore-box before-players">
+                            <div class="lore-box-header">
+                                <h4>Before the Heroes</h4>
+                                <button class="edit-section-btn" data-section="before">Edit</button>
+                            </div>
+                            <div class="lore-content before-content">
+                                <!-- Before content will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div class="lore-box during-players">
+                            <div class="lore-box-header">
+                                <h4>During the Adventure</h4>
+                                <button class="edit-section-btn" data-section="during">Edit</button>
+                            </div>
+                            <div class="lore-content during-content">
+                                <!-- During content will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div class="lore-box after-players">
+                            <div class="lore-box-header">
+                                <h4>After the Heroes</h4>
+                                <button class="edit-section-btn" data-section="after">Edit</button>
+                            </div>
+                            <div class="lore-content after-content">
+                                <!-- After content will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lore-box key-locations">
+                        <div class="lore-box-header">
+                            <h4>Key Locations</h4>
+                            <button class="edit-section-btn" data-section="locations">Edit</button>
+                        </div>
+                        <div class="lore-content locations-content">
+                            <!-- Locations content will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div class="lore-box key-events">
+                        <div class="lore-box-header">
+                            <h4>Key Events</h4>
+                            <button class="edit-section-btn" data-section="events">Edit</button>
+                        </div>
+                        <div class="lore-content events-content">
+                            <!-- Events content will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <img src="img/d20-icon.png" alt="D20 Icon" class="d20-icon">
+            <p>&copy; 2025 D&D Campaign Wiki</p>
+        </div>
+    </footer>
+
+    <!-- Add/Edit Campaign Modal -->
+    <div id="campaign-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="campaign-modal-title">Add New Campaign</h2>
+            <form id="campaign-form">
+                <input type="hidden" id="campaign-id">
+                
+                <div class="form-group">
+                    <label for="campaign-name">Campaign Name:</label>
+                    <input type="text" id="campaign-name" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Campaign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Lore Section Modal -->
+    <div id="lore-section-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="section-modal-title">Edit Section</h2>
+            <form id="lore-section-form">
+                <input type="hidden" id="section-id">
+                
+                <div class="form-group">
+                    <label for="section-content">Content:</label>
+                    <textarea id="section-content" rows="10" required></textarea>
+                    <div class="form-help">
+                        <p>You can use Markdown formatting for rich text:</p>
+                        <ul class="markdown-help">
+                            <li><code># Heading 1</code> - Creates a large heading</li>
+                            <li><code>## Heading 2</code> - Creates a medium heading</li>
+                            <li><code>**Bold text**</code> - Makes text <strong>bold</strong></li>
+                            <li><code>*Italic text*</code> - Makes text <em>italic</em></li>
+                            <li><code>[Link text](https://example.com)</code> - Creates a <a href="#">link</a></li>
+                            <li><code>- Item</code> or <code>* Item</code> - Creates a bullet list</li>
+                            <li><code>1. Item</code> - Creates a numbered list</li>
+                            <li><code>> Quote</code> - Creates a blockquote</li>
+                            <li><code>`code`</code> - Formats text as <code>code</code></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Content</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/markdown.min.js"></script>
+    <script src="js/shared-campaigns.js"></script>
+    <script src="js/lore.js"></script>
+</body>
+</html>
+
+

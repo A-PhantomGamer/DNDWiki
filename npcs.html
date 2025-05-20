@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Campaign Wiki - NPCs</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/npcs.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <h1>DUNGEONS <img src="img/dnd-ampersand.png" alt="&" class="dnd-ampersand"> DRAGONS</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="characters.html">Characters</a></li>
+                    <li><a href="npcs.html" class="active">NPCs</a></li>
+                    <li><a href="lore.html">Lore</a></li>
+                    <li><a href="campaigns.html">Campaigns</a></li>
+                    <li><a href="books.html">Books</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="npc-list">
+            <h2>Non-Player Characters</h2>
+            
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="location-filter">Filter by Location:</label>
+                    <select id="location-filter">
+                        <option value="all">All Locations</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="campaign-filter">Filter by Campaign:</label>
+                    <select id="campaign-filter">
+                        <option value="all">All Campaigns</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="type-filter">Filter by Type:</label>
+                    <select id="type-filter">
+                        <option value="all">All Types</option>
+                        <option value="ally">Allies</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="villain">Villains</option>
+                        <option value="merchant">Merchants</option>
+                        <option value="quest-giver">Quest Givers</option>
+                    </select>
+                </div>
+                
+                <button id="reset-filters-btn">Reset Filters</button>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="npc-search" placeholder="Search NPCs...">
+                <button id="search-btn">Search</button>
+            </div>
+            
+            <div class="add-npc">
+                <button id="add-npc-btn">Add New NPC</button>
+            </div>
+            
+            <div id="npcs-container">
+                <!-- NPC cards will be added here dynamically -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <img src="img/d20-icon.png" alt="D20 Icon" class="d20-icon">            
+            <p>&copy; 2025 D&D Campaign Wiki</p>        
+        </div>
+    </footer>
+
+    <!-- Edit NPC Modal -->
+    <div id="edit-npc-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit NPC</h2>
+            <form id="edit-npc-form">
+                <input type="hidden" id="edit-npc-id">
+                
+                <div class="form-group">
+                    <label for="edit-npc-name">Name:</label>
+                    <input type="text" id="edit-npc-name" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-npc-race">Race:</label>
+                        <input type="text" id="edit-npc-race">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-npc-occupation">Occupation:</label>
+                        <input type="text" id="edit-npc-occupation">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-npc-location">Location:</label>
+                        <select id="edit-npc-location">
+                            <option value="">-- Select Location --</option>
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                        <button type="button" id="add-location-btn" class="small-btn">+ Add New</button>
+                        
+                        <!-- New Location Form (hidden by default) -->
+                        <div id="new-location-form" class="new-location-form" style="display: none;">
+                            <input type="text" id="new-location-input" placeholder="Enter new location name">
+                            <div class="form-buttons">
+                                <button type="button" id="confirm-location-btn" class="small-btn confirm-btn">Add</button>
+                                <button type="button" id="cancel-location-btn" class="small-btn cancel-btn">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-npc-campaign">Campaign:</label>
+                        <select id="edit-npc-campaign">
+                            <option value="">-- Select Campaign --</option>
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                        <button type="button" id="add-campaign-btn" class="small-btn">+ Add New</button>
+                        
+                        <!-- New Campaign Form (hidden by default) -->
+                        <div id="new-campaign-form" class="new-campaign-form" style="display: none;">
+                            <input type="text" id="new-campaign-input" placeholder="Enter new campaign name">
+                            <div class="form-buttons">
+                                <button type="button" id="confirm-campaign-btn" class="small-btn confirm-btn">Add</button>
+                                <button type="button" id="cancel-campaign-btn" class="small-btn cancel-btn">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-npc-type">NPC Type:</label>
+                        <select id="edit-npc-type">
+                            <option value="ally">Ally</option>
+                            <option value="neutral">Neutral</option>
+                            <option value="villain">Villain</option>
+                            <option value="merchant">Merchant</option>
+                            <option value="quest-giver">Quest Giver</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-npc-status">Status:</label>
+                        <select id="edit-npc-status">
+                            <option value="alive">Alive</option>
+                            <option value="deceased">Deceased</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-npc-description">Description:</label>
+                    <textarea id="edit-npc-description" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-npc-appearance">Appearance:</label>
+                    <textarea id="edit-npc-appearance" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-npc-personality">Personality:</label>
+                    <textarea id="edit-npc-personality" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-npc-motivation">Motivation:</label>
+                    <textarea id="edit-npc-motivation" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-npc-notes">Notes:</label>
+                    <textarea id="edit-npc-notes" rows="3"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save NPC</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/shared-campaigns.js"></script>
+    <script src="js/npcs.js"></script>
+</body>
+</html>

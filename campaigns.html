@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Campaign Wiki - Campaigns</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/campaigns.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="header-content">
+            <h1>DUNGEONS <img src="img/dnd-ampersand.png" alt="&" class="dnd-ampersand"> DRAGONS</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="characters.html">Characters</a></li>
+                    <li><a href="npcs.html">NPCs</a></li>
+                    <li><a href="lore.html">Lore</a></li>
+                    <li><a href="campaigns.html" class="active">Campaigns</a></li>
+                    <li><a href="books.html">Books</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="campaigns-section">
+            <h2>Campaigns</h2>
+            
+            <div class="campaign-selector">
+                <label for="campaign-select">Select Campaign:</label>
+                <select id="campaign-select">
+                    <option value="">-- Select Campaign --</option>
+                    <!-- Options will be populated dynamically -->
+                </select>
+                <button id="add-campaign-btn">Add New Campaign</button>
+            </div>
+            
+            <div id="campaign-container">
+                <!-- Campaign content will be displayed here -->
+                <div class="empty-state">
+                    <p>Select a campaign from the dropdown above or create a new one to begin.</p>
+                </div>
+            </div>
+            
+            <!-- Template for campaign content -->
+            <template id="campaign-template">
+                <div class="campaign-container">
+                    <div class="campaign-header">
+                        <h3 class="campaign-title">Campaign Title</h3>
+                        <div class="campaign-actions">
+                            <button class="edit-campaign-btn">Edit Campaign</button>
+                            <button class="delete-campaign-btn">Delete</button>
+                        </div>
+                    </div>
+                    
+                    <div class="campaign-details">
+                        <div class="campaign-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">DM:</span>
+                                <span class="dm-name">Dungeon Master</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Status:</span>
+                                <span class="campaign-status">Active</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Started:</span>
+                                <span class="start-date">January 1, 2023</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Sessions:</span>
+                                <span class="session-count">12</span>
+                            </div>
+                        </div>
+                        
+                        <div class="campaign-box summary-box">
+                            <div class="box-header">
+                                <h4>Campaign Summary</h4>
+                                <button class="edit-section-btn" data-section="summary">Edit</button>
+                            </div>
+                            <div class="box-content summary-content">
+                                <!-- Summary content will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div class="campaign-box setting-box">
+                            <div class="box-header">
+                                <h4>Setting</h4>
+                                <button class="edit-section-btn" data-section="setting">Edit</button>
+                            </div>
+                            <div class="box-content setting-content">
+                                <!-- Setting content will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div class="campaign-box plot-box">
+                            <div class="box-header">
+                                <h4>Main Plot</h4>
+                                <button class="edit-section-btn" data-section="plot">Edit</button>
+                            </div>
+                            <div class="box-content plot-content">
+                                <!-- Plot content will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div class="campaign-sessions">
+                            <div class="sessions-header">
+                                <h4>Session Log</h4>
+                                <button class="add-session-btn">Add Session</button>
+                            </div>
+                            <div class="sessions-list">
+                                <!-- Session entries will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div class="campaign-box quests-box">
+                            <div class="box-header">
+                                <h4>Active Quests</h4>
+                                <button class="add-quest-btn">Add Quest</button>
+                            </div>
+                            <div class="quests-list">
+                                <!-- Quest entries will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div class="campaign-box notes-box">
+                            <div class="box-header">
+                                <h4>DM Notes</h4>
+                                <button class="edit-section-btn" data-section="notes">Edit</button>
+                            </div>
+                            <div class="box-content notes-content">
+                                <!-- Notes content will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <img src="img/d20-icon.png" alt="D20 Icon" class="d20-icon">
+            <p>&copy; 2025 D&D Campaign Wiki</p>
+        </div>
+    </footer>
+
+    <!-- Add/Edit Campaign Modal -->
+    <div id="campaign-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="campaign-modal-title">Add New Campaign</h2>
+            <form id="campaign-form">
+                <input type="hidden" id="campaign-id">
+                
+                <div class="form-group">
+                    <label for="campaign-name">Campaign Name:</label>
+                    <input type="text" id="campaign-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="campaign-dm">Dungeon Master:</label>
+                    <input type="text" id="campaign-dm">
+                </div>
+                
+                <div class="form-group">
+                    <label for="campaign-status">Status:</label>
+                    <select id="campaign-status">
+                        <option value="planning">Planning</option>
+                        <option value="active">Active</option>
+                        <option value="hiatus">On Hiatus</option>
+                        <option value="completed">Completed</option>
+                        <option value="abandoned">Abandoned</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="campaign-start-date">Start Date:</label>
+                    <input type="date" id="campaign-start-date">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Campaign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Section Modal -->
+    <div id="section-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="section-modal-title">Edit Section</h2>
+            <form id="section-form">
+                <input type="hidden" id="section-id">
+                
+                <div class="form-group">
+                    <label for="section-content">Content:</label>
+                    <textarea id="section-content" rows="10" required></textarea>
+                    <div class="form-help">
+                        <p>You can use Markdown formatting for rich text:</p>
+                        <ul class="markdown-help">
+                            <li><code># Heading 1</code> - Creates a large heading</li>
+                            <li><code>## Heading 2</code> - Creates a medium heading</li>
+                            <li><code>**Bold text**</code> - Makes text <strong>bold</strong></li>
+                            <li><code>*Italic text*</code> - Makes text <em>italic</em></li>
+                            <li><code>[Link text](https://example.com)</code> - Creates a link</li>
+                            <li><code>- Item</code> or <code>* Item</code> - Creates a bullet list</li>
+                            <li><code>1. Item</code> - Creates a numbered list</li>
+                            <li><code>> Quote</code> - Creates a blockquote</li>
+                            <li><code>`code`</code> - Formats text as <code>code</code></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Content</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Session Modal -->
+    <div id="session-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="session-modal-title">Add Session</h2>
+            <form id="session-form">
+                <input type="hidden" id="session-id">
+                <input type="hidden" id="session-campaign-id">
+                
+                <div class="form-group">
+                    <label for="session-number">Session Number:</label>
+                    <input type="number" id="session-number" min="1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="session-date">Date:</label>
+                    <input type="date" id="session-date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="session-title">Title:</label>
+                    <input type="text" id="session-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="session-summary">Summary:</label>
+                    <textarea id="session-summary" rows="8" required></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Session</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Quest Modal -->
+    <div id="quest-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="quest-modal-title">Add Quest</h2>
+            <form id="quest-form">
+                <input type="hidden" id="quest-id">
+                <input type="hidden" id="quest-campaign-id">
+                
+                <div class="form-group">
+                    <label for="quest-title">Quest Title:</label>
+                    <input type="text" id="quest-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quest-giver">Quest Giver:</label>
+                    <input type="text" id="quest-giver">
+                </div>
+                
+                <div class="form-group">
+                    <label for="quest-status">Status:</label>
+                    <select id="quest-status">
+                        <option value="active">Active</option>
+                        <option value="completed">Completed</option>
+                        <option value="failed">Failed</option>
+                        <option value="abandoned">Abandoned</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quest-description">Description:</label>
+                    <textarea id="quest-description" rows="6" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quest-reward">Reward:</label>
+                    <input type="text" id="quest-reward">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Quest</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/markdown.min.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/shared-campaigns.js"></script>
+    <script src="js/campaigns.js"></script>
+</body>
+</html>
